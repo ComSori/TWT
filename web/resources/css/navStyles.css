@@ -625,6 +625,10 @@ progress {
   color: #6c757d;
 }
 
+.main_Content {
+  height:700px;
+}
+
 .container,
 .container-fluid,
 .container-xxl,
@@ -11140,12 +11144,14 @@ footer {
 header.masthead {
   position: relative;
   margin-bottom: 0px;
+  height:240px;
   padding-top: 50px;
   padding-bottom: 50px;
   background: no-repeat center center;
   background-color: #6c757d;
   background-size: cover;
   background-attachment: scroll;
+  pointer-events : none;
 }
 header.masthead:before {
   content: "";
@@ -11207,6 +11213,7 @@ header.masthead .post-heading .meta a {
   header.masthead {
     padding-top: 50px;
     padding-bottom: 50px;
+    height:240px;
   }
   header.masthead .page-heading h1, header.masthead .page-heading .h1,
 header.masthead .site-heading h1,
@@ -11265,4 +11272,8 @@ header.masthead .site-heading .h1 {
   .post-preview > a > .post-title {
     font-size: 2.25rem;
   }
+}
+
+.main_Content {
+  height:1000px;
 }
