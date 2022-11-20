@@ -18,3 +18,15 @@
     background:blue;
     float:right;
 }
+
+.side_Contents .login_info_menu {
+    height:50%;
+    width:100%;
+    background:blue;
+}
+
+.side_Contents .chat_menu {
+    height:50%;
+    width:100%;
+    background:yellow;
+}
