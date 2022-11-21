@@ -3,6 +3,7 @@
     height: 100%;
     background:red;
     float:left;
+    z-index:20;
 }
 
 .main_Content .board_Contents {
@@ -17,6 +18,7 @@
     height:100%;
     background:blue;
     float:right;
+    z-index:20;
 }
 
 .side_Contents .login_info_menu {

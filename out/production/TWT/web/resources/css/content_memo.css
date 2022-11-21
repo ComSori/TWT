@@ -6,15 +6,27 @@ button {
     width:100%;
     height:100%;
     background-color:goldenrod;
+    position:relative;
 }
 
 #memo_inputBox {
     display:none;
-    position: relative;
+    position: absolute;
     width:250px;
     height:180px;
     left:0px;
     top:0px;
+    border-radius: 10px;
+    background-color: #FFF;
+    cursor:default;
+    z-index: 11;
+}
+
+#memo_inputBox_updated {
+    display:inline-block;
+    position:absolute;
+    width:250px;
+    height:180px;
     border-radius: 10px;
     background-color: #FFF;
     cursor:default;
@@ -30,24 +42,45 @@ button {
     font-size:15px;
     padding:20px;
     border-radius: 0px 0px 10px 10px;
+    border:1px solid black;
 }
 
-.memo_controlBar {
+#memo_controlBar {
     position:relative;
     top:0px;
     height:30px;
     width:100%;
     display:flex;
     justify-content: space-between;
+    border-radius: 10px 10px 0px 0px;
+    border:1px solid black;
+    border-bottom:0px;
 }
 
-.memo_cancel {
+.memo_button_design {
     cursor: pointer;
     margin-left: 5px;
+    stroke: currentColor;
+    fill : currentColor;
+    stroke-width: 0;
+    viewBox: 0 0 16 16;
+    height:25px;
+    width:25px;
+    xmlns: "http://www.w3.org/2000/svg";
 }
 
-.memo_submit {
-    cursor: pointer;
-    margin-right: 5px;
+#cancel_button {
+    width:30px;
+    background-image: url("../img/symbol_x.png");
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: center;
+}
 
+#add_button {
+    width:30px;
+    background-image: url("../img/symbol_check.png");
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: center;
 }
