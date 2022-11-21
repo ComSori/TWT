@@ -1,0 +1,53 @@
+button {
+    all : unset;
+}
+
+#memo_space {
+    width:100%;
+    height:100%;
+    background-color:goldenrod;
+}
+
+#memo_inputBox {
+    display:none;
+    position: relative;
+    width:250px;
+    height:180px;
+    left:0px;
+    top:0px;
+    border-radius: 10px;
+    background-color: #FFF;
+    cursor:default;
+    z-index: 10;
+}
+
+#memo_inputText {
+    height:150px; width:250px;
+    resize:none;
+    background-color: rgba(0,0,0,0);
+    text-align:center;
+    font-family:Hand1;
+    font-size:15px;
+    padding:20px;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.memo_controlBar {
+    position:relative;
+    top:0px;
+    height:30px;
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+}
+
+.memo_cancel {
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.memo_submit {
+    cursor: pointer;
+    margin-right: 5px;
+
+}
