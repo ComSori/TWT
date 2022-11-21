@@ -1,0 +1,32 @@
+.main_Content .sideBar{
+    width: 15%;
+    height: 100%;
+    background:red;
+    float:left;
+}
+
+.main_Content .board_Contents {
+    width:65%;
+    height:100%;
+    background:green;
+    float:left;
+}
+
+.main_Content .side_Contents {
+    width:20%;
+    height:100%;
+    background:blue;
+    float:right;
+}
+
+.side_Contents .login_info_menu {
+    height:50%;
+    width:100%;
+    background:blue;
+}
+
+.side_Contents .chat_menu {
+    height:50%;
+    width:100%;
+    background:yellow;
+}

@@ -1,0 +1,13 @@
+.main_Content .sideBar{
+    width: 20%;
+    height: 100%;
+    background:black;
+    float:left;
+}
+
+.main_Content .timeTable_Contents {
+    width:80%;
+    height:100%;
+    background:yellow;
+    float:left;
+}
