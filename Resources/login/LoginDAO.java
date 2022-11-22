@@ -1,4 +1,4 @@
-package Resources.dbcon;
+package Resources.login;
 
 public class LoginDAO {
 }
