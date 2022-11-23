@@ -19,6 +19,7 @@ public class LoginDAO {
 
     public String LoginQuery() {
         List list=new ArrayList();
+        String qry=new String();
         try {
             connDB();
             con=dataFactory.getConnection();
@@ -40,7 +41,7 @@ public class LoginDAO {
         }catch(Exception e) {
             e.printStackTrace();
         }
-        return pwd;
+        return qry;
     }
     private void connDB() {
         try {
