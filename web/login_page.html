@@ -4,20 +4,21 @@
   <meta charset="UTF-8">
   <title>login</title>
   <link rel="stylesheet" href="resources/css/login_page.css">
-  <script type="text/javascript">
+<!--  <script type="text/javascript">
     window.onload = function() {
       setTimeout(function() {
         scrollTo(0,0);
       }, 0);
     }
   </script>
+-->
 </head>
 <body>
 <div class="login_main">
   <h1 class="login_logo">TWT</h1>
-  <form class="container" action="##########" method = "post">
-    <input type="text" placeholder="ID" id="id" class="account" name="id">
-    <input type="password" placeholder="Password" id="password" class="account" name="password">
+  <form class="container" action="#######" method = "post">
+    <input type="text" placeholder="ID" id="" class="account" name="id">
+    <input type="password" placeholder="Password" id="#" class="account" name="password">
     <button id="login_button" class="account">login</button>
   </form>
   <div class="other_login">
@@ -36,7 +37,6 @@
 <a id="register_pos"></a>
   <div class="login_main register_main">
     <h1>회원가입</h1>
-    <br>
     <form class="container" name="register" action="#" method="post">
       ID
       <input type="button" class="dist_check_button" onclick="alert('중복확인')" name="user_IDcheck" value="아이디 중복 확인">
@@ -44,13 +44,11 @@
       <input type="text" class="account" name="user_ID" placeholder="아이디 입력" >
 
       PassWord<br>
-      <input type="password" name="user_PW1" class="account" value="" placeholder="비밀번호 입력">
-      <!--  비밀번호 재확인<br>
-      <input type="password" name="user_PW2" class="account" value="" placeholder="비밀번호 재입력">
-      <input type="button" name="user_PWcheck" value="비밀번호 재확인">
-      -->
+      <input type="password" name="user_PW" class="account" value="" placeholder="비밀번호 입력">
+      Name<br>
+      <input type="text" name="user_name" class="account" value="" placeholder="이름 입력">
       <br>
-      <input type="submit" id="register_button" class="account" name="" value="제출"/>
+      <input type="submit" id="register_button" class="account" name="user_register" value="제출"/>
     </form>
     <div class="register">
       <a href="#">
