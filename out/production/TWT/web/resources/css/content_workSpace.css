@@ -11,6 +11,7 @@
     height:100%;
     background:green;
     float:left;
+    z-index:0;
 }
 
 .main_Content .side_Contents {
@@ -43,8 +44,9 @@ button {
 #memo_space {
     width:100%;
     height:100%;
-    background-color:goldenrod;
+    background-color:white;
     position:relative;
+    overflow-x:scroll;
 }
 
 #memo_inputBox {
@@ -55,9 +57,9 @@ button {
     left:0px;
     top:0px;
     border-radius: 10px;
-    background-color: #FFF;
+    background-color: #FEF7B1;
     cursor:default;
-    z-index: 11;
+    z-index: 6;
 }
 
 #memo_inputBox_updated {
@@ -66,13 +68,14 @@ button {
     width:250px;
     height:180px;
     border-radius: 10px;
-    background-color: #FFF;
+    background-color: #FEF7B1;
     cursor:default;
-    z-index: 10;
+    z-index: 5;
 }
 
 #memo_inputText {
-    height:150px; width:250px;
+    height:150px;
+    width:250px;
     resize:none;
     background-color: rgba(0,0,0,0);
     text-align:center;
@@ -81,6 +84,12 @@ button {
     padding:20px;
     border-radius: 0px 0px 10px 10px;
     border:1px solid black;
+    overflow-y:scroll;
+    -ms-overflow-style: none; /* 스크롤바 안보이게 */
+}
+
+#memo_inputText::-webkit-scrollbar {
+    display:none; /* 크롬, 사파리 */
 }
 
 #memo_controlBar {

@@ -5,6 +5,7 @@ function clickSpace(event) {
         console.log(event.target.getAttribute("id"));
 
         if(event.target.getAttribute("id") == "memo_controlBar") {
+
             x = parseInt(x) + parseInt(event.target.parentElement.style.left.replace("px", ""));
             y = parseInt(y) + parseInt(event.target.parentElement.style.top.replace("px", ""));
         } else if(event.target.getAttribute("id") == "memo_inputText") {
@@ -35,15 +36,12 @@ function memo_submit() {
     var text = document.getElementById("memo_inputText").value;
     var posX = document.getElementById("memo_inputBox").style.left;
     var posY = document.getElementById("memo_inputBox").style.top;
-    console.log(text);
-    console.log(posX);
-    console.log(posY);
 
     create_memo_data(text, posX, posY);
 
     var box = document.getElementById("memo_inputBox");
     box.style.display = "none";
-    document.getElementById("memo_inputText").value = "";
+    document.getElementById("memo_inputText").value = ""; // text reset
     event.stopPropagation();
 
 }
