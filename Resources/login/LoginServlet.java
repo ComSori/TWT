@@ -31,7 +31,7 @@ public class LoginServlet {
         for(int i=0;i<list.size();i++) {
             LoginVO loginVO=(LoginVO) list.get(i);
             String id=loginVO.getId();
-            String pwd=loginVO.getPwd();
+            String pwde=loginVO.getPwd();
         }
         out.print("</table></body></html>");
 }
