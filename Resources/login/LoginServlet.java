@@ -8,9 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 
 public class LoginServlet {
     private static final long serialVersionUID = 1L;
@@ -24,25 +23,20 @@ public class LoginServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");
         //request id, pwd
-        String r_id=request.getParameter("id");
-        String r_pwd=request.getParameter("password");
+        String r_id = request.getParameter("id");
+        String r_pwd = request.getParameter("password");
 
-        LoginDAO dao=new LoginDAO(r_id);
-        String qry=dao.LoginQuery();
+        LoginDAO dao = new LoginDAO(r_id);
+        LoginVO qry = dao.LoginQuery();
 
-        LoginVO loginVO=new LoginVO();
-        String db_id=loginVO.getId();
-        String db_pwd=loginVO.getPwd();
+        LoginVO loginVO = new LoginVO();
+        String db_id = loginVO.getId();
+        String db_pwd = loginVO.getPwd();
 
-        if(db_pwd==r_pwd){
-
-        }else{
+        if (db_pwd == r_pwd) {
+            HttpSession session = request.getSession();
+            session
+        } else {
 
         }
-        /*
-        for(int i=0;i<list.size();i++) {
-            LoginVO loginVO=(LoginVO) list.get(i);
-            String id=loginVO.getId();
-            String pwd=loginVO.getPwd();
-        }*/
-}
+    }
