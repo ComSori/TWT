@@ -3,6 +3,7 @@ package Resources.login;
 public class LoginVO {
     private String id;
     private String pwd;
+    private String name;
     public String getId() {
         return id;
     }
@@ -16,5 +17,9 @@ public class LoginVO {
 
     public void setPwd(String pwd) {
         this.pwd=pwd;
+    }
+    public String getName(){return name;}
+    public void setName(String name){
+        this.name=name;
     }
 }

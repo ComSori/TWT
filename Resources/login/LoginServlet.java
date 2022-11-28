@@ -5,19 +5,14 @@ import Resources.dbcon.MemberVO;
 import com.sun.tools.javac.Main;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class LoginServlet {
     private static final long serialVersionUID = 1L;
+
     public LoginServlet() {
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,16 +22,25 @@ public class LoginServlet {
         String r_pwd = request.getParameter("password");
 
         LoginDAO dao = new LoginDAO(r_id);
-        LoginVO qry = dao.LoginQuery();
 
         LoginVO loginVO = new LoginVO();
-        String db_id = loginVO.getId();
+        //String db_id = loginVO.getId();
         String db_pwd = loginVO.getPwd();
 
         if (db_pwd == r_pwd) {
+            /*
             HttpSession session = request.getSession();
-            session
+            for(int i=0;i<list.size();i++) {
+                session.setAttribute("team" + i, list.team_id);
+             */
+            Cookie cookie = new Cookie("name", loginVO.getId());
+            response.addCookie(cookie);
+            response.sendRedirect("Main.html");
         } else {
-
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('올바르지 않은 ID이거나 Password입니다.'); location.href='login_page.html';</script>");
+            out.flush();
         }
     }
+}

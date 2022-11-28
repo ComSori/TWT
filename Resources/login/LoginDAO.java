@@ -1,11 +1,7 @@
 package Resources.login;
 
-import Resources.dbcon.MemberVO;
-
 import javax.sql.DataSource;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class LoginDAO {
     private Connection con;
@@ -28,8 +24,10 @@ public class LoginDAO {
             ResultSet rs=pstmt.executeQuery();
             String id=rs.getString("u_id");
             String pwd=rs.getString("password");
+            String name=rs.getString("user_name");
             vo.setId(id);
             vo.setPwd(pwd);
+            vo.setName(name);
             rs.close();
             pstmt.close();
             con.close();
@@ -41,9 +39,9 @@ public class LoginDAO {
     }
     private void connDB() {
         try {
-            Class.forName("com.mysql.driver");
+            Class.forName("com.mysql.jdbc.Driver");
             System.out.println("드라이버 로딩 성공");
-            con= DriverManager.getConnection("dbc:oracle:thin:@localhost:59550","root","");
+            con= DriverManager.getConnection("jdbc:mysql://3.39.132.237:59550/twt","root","");
             System.out.println("Connection 생성 성공");
         }catch(Exception e) {
             e.printStackTrace();
