@@ -13,10 +13,10 @@ import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.List;
 
-//@WebServlet("/member")
-public class SignupServlet extends HttpServlet {
+//@WebServlet("/chk_id")
+public class SignupIdCheckServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    public SignupServlet() {
+    public SignupIdCheckServlet() {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,26 +28,16 @@ public class SignupServlet extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");
-        //request id, pwd
+        //request id
         String r_id = request.getParameter("id");
-        String r_pwd = request.getParameter("password");
-        String r_name = request.getParameter("name");
-/*
-        LoginDAO dao = new LoginDAO(r_id);
-        LoginVO qry = dao.LoginQuery();
 
-        LoginVO loginVO = new LoginVO();
-        String db_id = loginVO.getId();
-        String db_pwd = loginVO.getPwd();
-*/
-        SignupDAO dao = new SignupDAO(r_id, r_pwd, r_name);
-        response.setContentType("text/html; charset=UTF-8");
+        SignupDAO dao = new SignupDAO(r_id);
         PrintWriter writer = response.getWriter();
 
         if(dao.chk_id_distinct(r_id)) {
-            writer.println("<script>alert(" + dao.Signupquery() + ");</script>");
+            writer.println("<script>alert('중복되지 않은 ID 입니다.');</script>");
         } else {
-            writer.println("<script>alert('회원가입 실패'); location.href='login_page.html#signup_pos'; </script>");
+            writer.println("<script>alert('중복된 ID 입니다.');</script>");
         }
         writer.close();
     }

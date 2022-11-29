@@ -2,7 +2,7 @@ package Resources.login;
 
 import Resources.dbcon.MemberDAO;
 import Resources.dbcon.MemberVO;
-import com.sun.tools.javac.Main;
+//import com.sun.tools.javac.Main;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,8 +35,9 @@ public class LoginServlet {
 
         if (db_pwd == r_pwd) {
             HttpSession session = request.getSession();
-            session
+           // session
         } else {
-
+            ;
         }
     }
+}

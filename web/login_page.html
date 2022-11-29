@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>login</title>
   <link rel="stylesheet" href="resources/css/login_page.css">
+  <script type="text/javascript" src="resources/js/login_page.js"></script>
 <!--  <script type="text/javascript">
     window.onload = function() {
       setTimeout(function() {
@@ -37,9 +38,11 @@
 <a id="signup_pos"></a>
   <div class="login_main signup_main">
     <h1>회원가입</h1>
-    <form class="container" name="signup" action="#" method="post">
+    <form class="container" name="signup" action="/signup" method="post">
       ID
-      <input type="button" class="dist_check_button" onclick="alert('중복확인')" name="user_IDcheck" value="아이디 중복 확인">
+      <form action="id_check" method="post">
+        <input type="submit" class="dist_check_button" name="user_IDcheck" value="아이디 중복 확인">
+      </form>
       <br>
       <input type="text" class="account" name="user_ID" placeholder="아이디 입력" >
 

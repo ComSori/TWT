@@ -15,6 +15,9 @@ public class SignupDAO {
     private String pwd;
     private String name;
 
+    public SignupDAO(String id){
+        this.id = id;
+    }
     public SignupDAO(String id, String pwd, String name){
         this.id = id;
         this.pwd = pwd;
