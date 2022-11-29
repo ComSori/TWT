@@ -5,6 +5,16 @@
          version="4.0">
 
     <servlet>
+        <servlet-name>logindb</servlet-name>
+        <servlet-class>Resources.login.LoginServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>logindb</servlet-name>
+        <url-pattern>/logins</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>IDcheck</servlet-name>
         <servlet-class>Resources.signup.SignupIdCheckServlet</servlet-class>
     </servlet>
