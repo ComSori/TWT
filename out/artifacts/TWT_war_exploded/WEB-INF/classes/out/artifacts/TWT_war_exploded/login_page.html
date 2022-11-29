@@ -17,7 +17,7 @@
 <body>
 <div class="login_main">
   <h1 class="login_logo">TWT</h1>
-  <form class="container" action="/logins" method = "post">
+  <form class="container" action="#######" method = "post">
     <input type="text" placeholder="ID" id="" class="account" name="id">
     <input type="password" placeholder="Password" id="#" class="account" name="password">
     <button id="login_button" class="account">login</button>
@@ -38,13 +38,13 @@
 <a id="signup_pos"></a>
   <div class="login_main signup_main">
     <h1>회원가입</h1>
-
-    <form class="container_check" action="/id_check" method="post">
-      ID
-      <input type="submit" class="dup_check_button" name="user_IDcheck" value="아이디 중복 확인">
-    </form>
     <form class="container" name="signup" action="/signup" method="post">
-      <input type="text" class="account" name="user_ID" id="user_ID" placeholder="아이디 입력" >
+      ID
+      <form action="id_check" method="post">
+        <input type="submit" class="dist_check_button" name="user_IDcheck" value="아이디 중복 확인">
+      </form>
+      <br>
+      <input type="text" class="account" name="user_ID" placeholder="아이디 입력" >
 
       PassWord<br>
       <input type="password" name="user_PW" class="account" value="" placeholder="비밀번호 입력">
