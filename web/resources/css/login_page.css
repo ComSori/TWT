@@ -74,26 +74,26 @@ body {
     overflow:hidden;
 }
 
-.register > a {
+.signup > a {
     font-size:15px;
     text-decoration: none;
 }
 
-.register_main {
+.signup_main {
     position:absolute;
     top:1000px;
 }
 
-#register_pos {
+#signup_pos {
     position:absolute;
     top: 992px;
 }
 
-.register_main {
+.signup_main {
     height:auto !important;
     padding-bottom:20px;
 }
-#register_button {
+#signup_button {
     width:100%;
     height:30px;
     background-color: #00FF7F;
@@ -103,7 +103,7 @@ body {
     transition:0.3s;
 }
 
-#register_button:hover {
+#signup_button:hover {
     background-color: #3CB371;
     color:white;
     transition:0.3s;

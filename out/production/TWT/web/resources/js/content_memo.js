@@ -1,3 +1,4 @@
+
 function clickSpace(event) {
     if(getComputedStyle(document.getElementById("memo_inputBox")).display == "none"){
         var x = event.offsetX;
