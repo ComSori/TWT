@@ -1,15 +1,11 @@
 package Resources.login;
 
-import Resources.dbcon.MemberDAO;
-import Resources.dbcon.MemberVO;
-import com.sun.tools.javac.Main;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class LoginServlet {
+public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     public LoginServlet() {

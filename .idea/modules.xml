@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/TWT.iml" filepath="$PROJECT_DIR$/.idea/TWT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TWT.iml" filepath="$PROJECT_DIR$/TWT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/out/out.iml" filepath="$PROJECT_DIR$/out/out.iml" />
     </modules>
   </component>
 </project>
