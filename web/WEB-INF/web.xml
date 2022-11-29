@@ -21,7 +21,7 @@
 
     <servlet-mapping>
         <servlet-name>IDcheck</servlet-name>
-        <url-pattern>id_check</url-pattern>
+        <url-pattern>/id_check</url-pattern>
     </servlet-mapping>
 
 

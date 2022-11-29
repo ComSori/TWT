@@ -1,7 +1,5 @@
 package Resources.signup;
 
-import Resources.dbcon.MemberVO;
-
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
@@ -74,9 +72,9 @@ public class SignupDAO {
     }
     private void connDB() {
         try {
-            Class.forName("com.mysql.driver");
+            Class.forName("com.mysql.jdbc.Driver");
             System.out.println("드라이버 로딩 성공");
-            con= DriverManager.getConnection("dbc:oracle:thin:@localhost:59550","root","");
+            con= DriverManager.getConnection("jdbc:mysql://3.39.132.237:59550/twt","webp","0000");
             System.out.println("Connection 생성 성공");
         }catch(Exception e) {
             e.printStackTrace();
