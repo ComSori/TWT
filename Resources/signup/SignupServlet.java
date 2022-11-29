@@ -44,7 +44,7 @@ public class SignupServlet extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
         PrintWriter writer = response.getWriter();
 
-        if(dao.chk_id_distinct(r_id)) {
+        if(dao.chk_id_duplicate(r_id)) {
             writer.println("<script>alert(" + dao.Signupquery() + ");</script>");
         } else {
             writer.println("<script>alert('회원가입 실패'); location.href='login_page.html#signup_pos'; </script>");

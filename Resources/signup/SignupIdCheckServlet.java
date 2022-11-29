@@ -32,9 +32,10 @@ public class SignupIdCheckServlet extends HttpServlet {
         String r_id = request.getParameter("id");
 
         SignupDAO dao = new SignupDAO(r_id);
+        boolean result = dao.chk_id_duplicate(r_id);
         PrintWriter writer = response.getWriter();
 
-        if(dao.chk_id_distinct(r_id)) {
+        if(dao.chk_id_duplicate(r_id)) {
             writer.println("<script>alert('중복되지 않은 ID 입니다.');</script>");
         } else {
             writer.println("<script>alert('중복된 ID 입니다.');</script>");

@@ -11,6 +11,7 @@
     height:100%;
     background:green;
     float:left;
+    z-index:0;
 }
 
 .main_Content .side_Contents {
@@ -32,3 +33,105 @@
     width:100%;
     background:yellow;
 }
+
+/******************************************
+ * main_Content -> board_Content memo css *
+ ******************************************/
+button {
+    all : unset;
+}
+
+#memo_space {
+    width:100%;
+    height:100%;
+    background-color:white;
+    position:relative;
+    overflow-x:scroll;
+}
+
+#memo_inputBox {
+    display:none;
+    position: absolute;
+    width:250px;
+    height:180px;
+    left:0px;
+    top:0px;
+    border-radius: 10px;
+    background-color: #FEF7B1;
+    cursor:default;
+    z-index: 6;
+}
+
+#memo_inputBox_updated {
+    display:inline-block;
+    position:absolute;
+    width:250px;
+    height:180px;
+    border-radius: 10px;
+    background-color: #FEF7B1;
+    cursor:default;
+    z-index: 5;
+}
+
+#memo_inputText {
+    height:150px;
+    width:250px;
+    resize:none;
+    background-color: rgba(0,0,0,0);
+    text-align:center;
+    font-family:Hand1;
+    font-size:15px;
+    padding:20px;
+    border-radius: 0px 0px 10px 10px;
+    border:1px solid black;
+    overflow-y:scroll;
+    -ms-overflow-style: none; /* 스크롤바 안보이게 */
+}
+
+#memo_inputText::-webkit-scrollbar {
+    display:none; /* 크롬, 사파리 */
+}
+
+#memo_controlBar {
+    position:relative;
+    top:0px;
+    height:30px;
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+    border-radius: 10px 10px 0px 0px;
+    border:1px solid black;
+    border-bottom:0px;
+}
+
+.memo_button_design {
+    cursor: pointer;
+    margin-left: 5px;
+    stroke: currentColor;
+    fill : currentColor;
+    stroke-width: 0;
+    viewBox: 0 0 16 16;
+    height:25px;
+    width:25px;
+    xmlns: "http://www.w3.org/2000/svg";
+}
+
+#cancel_button {
+    width:30px;
+    background-image: url("../img/symbol_x.png");
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: center;
+}
+
+#add_button {
+    width:30px;
+    background-image: url("../img/symbol_check.png");
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: center;
+}
+
+/**********************************************
+ * main_Content -> board_Content memo css end *
+ **********************************************/

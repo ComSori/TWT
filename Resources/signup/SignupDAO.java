@@ -47,12 +47,12 @@ public class SignupDAO {
         return "Signupquery end";
     }
 
-    public boolean chk_id_distinct(String id) {
+    public boolean chk_id_duplicate(String id) {
         try {
             connDB();
             con=dataFactory.getConnection();
-            String query="select * from user_table";
-            pstmt=con.prepareStatement(query);
+            String query="select id from user_table";
+            pstmt=con.prepareStatement(query.toString());
             ResultSet rs=pstmt.executeQuery();
             String u_id=rs.getString("u_id");
             while(rs.next()) {

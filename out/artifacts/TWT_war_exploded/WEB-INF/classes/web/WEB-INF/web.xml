@@ -5,13 +5,24 @@
          version="4.0">
 
     <servlet>
-        <servlet-name>memo_submit</servlet-name>
-        <servlet-class>memo_submit_Servlet</servlet-class>
+        <servlet-name>IDcheck</servlet-name>
+        <servlet-class>Resources.signup.SignupIdCheckServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>memo_submit</servlet-name>
-        <url-pattern>/memo_submit</url-pattern>
+        <servlet-name>IDcheck</servlet-name>
+        <url-pattern>/id_check</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>signUp</servlet-name>
+        <servlet-class>Resources.signup.SignupServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>signUp</servlet-name>
+        <url-pattern>/signup</url-pattern>
     </servlet-mapping>
 
 </web-app>
