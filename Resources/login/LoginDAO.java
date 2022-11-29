@@ -6,7 +6,6 @@ import java.sql.*;
 public class LoginDAO {
     private Connection con;
     private PreparedStatement pstmt;
-    private DataSource dataFactory;
     private String Id;
 
     public LoginDAO(String id){
@@ -18,13 +17,15 @@ public class LoginDAO {
 
         try {
             connDB();
-            con=dataFactory.getConnection();
-            String query="select * from user_table where u_id="+Id;
+            String query="select * from user_table where u_id='"+Id+"'";
             pstmt=con.prepareStatement(query);
             ResultSet rs=pstmt.executeQuery();
-            String id=rs.getString("u_id");
-            String pwd=rs.getString("password");
-            String name=rs.getString("user_name");
+            String id="",pwd="",name="";
+            while(rs.next()) {
+                id = rs.getString("u_id");
+                pwd = rs.getString("u_passwd");
+                name = rs.getString("u_name");
+            }
             vo.setId(id);
             vo.setPwd(pwd);
             vo.setName(name);
@@ -41,7 +42,7 @@ public class LoginDAO {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             System.out.println("드라이버 로딩 성공");
-            con= DriverManager.getConnection("jdbc:mysql://3.39.132.237:59550/twt","root","");
+            con= DriverManager.getConnection("jdbc:mysql://3.39.132.237:59550/twt","webp","0000");
             System.out.println("Connection 생성 성공");
         }catch(Exception e) {
             e.printStackTrace();

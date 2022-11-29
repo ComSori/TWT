@@ -19,11 +19,11 @@ public class LoginServlet extends HttpServlet {
 
         LoginDAO dao = new LoginDAO(r_id);
 
-        LoginVO loginVO = new LoginVO();
+        LoginVO loginVO = dao.LoginQuery();
         //String db_id = loginVO.getId();
         String db_pwd = loginVO.getPwd();
 
-        if (db_pwd == r_pwd) {
+        if (db_pwd.equals(r_pwd)) {
             /*
             HttpSession session = request.getSession();
             for(int i=0;i<list.size();i++) {
