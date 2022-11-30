@@ -23,17 +23,15 @@ public class LoginServlet extends HttpServlet {
         //String db_id = loginVO.getId();
         String db_pwd = loginVO.getPwd();
 
-        if (db_pwd.equals(r_pwd)) {
-            /*
-            HttpSession session = request.getSession();
-            for(int i=0;i<list.size();i++) {
-                session.setAttribute("team" + i, list.team_id);
-             */
-            Cookie cookie = new Cookie("name", loginVO.getName());
+        if ("".equals(r_pwd)) {
+            PrintWriter out=response.getWriter();
+            out.println("<script>alert('아이디나 패스워드를 입력하세요'); location.href='login_page.html';</script>");
+            out.flush();
+        } else if(db_pwd.equals(r_pwd)){
+            Cookie cookie = new Cookie("name", loginVO.getId());
             response.addCookie(cookie);
             response.sendRedirect("Main.html");
-        } else {
-            response.setContentType("text/html; charset=UTF-8");
+        }else {
             PrintWriter out = response.getWriter();
             out.println("<script>alert('올바르지 않은 ID이거나 Password입니다.'); location.href='login_page.html';</script>");
             out.flush();
