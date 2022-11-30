@@ -4,6 +4,13 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+    <welcome-file-list> <!-- 시작 페이지 순서 -->
+        <welcome-file>login_page.html</welcome-file>
+        <welcome-file>Main.html</welcome-file>
+        <welcome-file>TimeTable.html</welcome-file>
+        <welcome-file>WorkSpace.html</welcome-file>
+    </welcome-file-list>
+
     <servlet>
         <servlet-name>logindb</servlet-name>
         <servlet-class>Resources.login.LoginServlet</servlet-class>

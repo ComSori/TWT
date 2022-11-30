@@ -21,6 +21,7 @@ public class SignupIdCheckServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
+
     }
 
     /**
@@ -30,20 +31,21 @@ public class SignupIdCheckServlet extends HttpServlet {
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
         //request id
-        String r_id = request.getParameter("id");
-
+        String r_id = request.getParameter("r_id");
         SignupDAO dao = new SignupDAO(r_id);
-        boolean result = dao.chk_id_duplicate(r_id);
 
-        response.sendRedirect("login_page.html");
+        String result = dao.chk_id_duplicate(r_id);
 
-        if(result) {
-            out.println("<script>alert('중복되지 않은 ID 입니다.');</script>");
+        if("".equals(r_id)){
+            out.println("<script> alert('아이디를입력해주세요.'); window.history.back(); </script>");
         } else {
-            out.println("<script>alert('중복된 ID 입니다.');</script>");
+            if (result == null) { // 값이 반환될 경우 -> db에 이미 값이 있음(중복)
+                out.println("<script> alert('중복되지 않은 ID 입니다.'); window.history.back();</script>");
+            } else {
+                out.println("<script> alert('중복된 ID 입니다.'); window.history.back();</script>");
+            }
         }
+
         out.close();
-
     }
-
 }
