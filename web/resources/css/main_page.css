@@ -1,0 +1,102 @@
+body {
+
+    overflow-x : hidden;
+    scroll-behavior: auto;
+}
+
+#main_page_container {
+    min-width:100%;
+    position:absolute;
+    left:25%;
+    top:0px;
+}
+
+.main_Content {
+    width:100%;
+    height:500px;
+    display:inline-block;
+}
+
+/*************
+ * form css  *
+ *************/
+
+.team_content {
+    width: 280px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 10px solid lightgrey;
+    border-radius: 20px;
+    position:relative;
+    margin-top:100%;
+}
+
+.form_container {
+    width:200px;
+    position:relative;
+    margin-bottom:0px;
+    border-radius:5px;
+    padding:10px;
+    font-size:15px;
+}
+
+.submit_button {
+    width:188px;
+    height:30px;
+    background-color: #00FF7F;
+    border-color: transparent;
+    margin:1px;
+    color: black;
+    transition:0.3s;
+}
+
+.submit_button:hover {
+    background-color: #3CB371;
+    color:white;
+    transition:0.3s;
+}
+
+.form_logo {
+    margin-top: 0px;
+    margin-bottom: 15px;
+    font-size:30px;
+}
+
+.input_box {
+    width:188px;
+    height:30px;
+    display: block;
+    margin-bottom: 18px;
+
+    border: 1px solid lightgray;
+    padding:5px;
+    border-radius: 5px;
+}
+
+.signup > a {
+    font-size:15px;
+    text-decoration: none;
+}
+
+
+/**********************
+ * make team contents *
+ **********************/
+#makeTeam_content {
+    height:100%;
+    left:0px;
+    position:absolute;
+}
+
+/**********************
+ * make team contents *
+ **********************/
+
+#joinTeam_content {
+    height:100%;
+    left:130%;
+    position:absolute;
+}
