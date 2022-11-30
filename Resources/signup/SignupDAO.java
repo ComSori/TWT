@@ -1,9 +1,12 @@
 package Resources.signup;
 
 import javax.sql.DataSource;
+import java.io.PrintWriter;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.rmi.server.LogStream.log;
 
 public class SignupDAO {
     private Connection con;
@@ -20,18 +23,17 @@ public class SignupDAO {
         this.id = id;
         this.pwd = pwd;
         this.name = name;
+
     }
 
-    public String Signupquery() {
+    public void SignupQuery() {
         SignupVO vo=new SignupVO();
 
         try {
             connDB();
-            con=dataFactory.getConnection();
-//            ResultSet rs=pstmt.executeQuery();
-
-            String query_Insert="insert into user_table values('" + id + "','" + name + "','" + pwd + "')";
-            pstmt=con.prepareStatement(query_Insert);
+            String query_Insert="insert into user_table values('" + id + "','" + name + "','" + pwd + "','0')";
+            pstmt = con.prepareStatement(query_Insert);
+            pstmt.executeUpdate();
 
             vo.setId(id);
             vo.setPwd(pwd);
@@ -42,33 +44,27 @@ public class SignupDAO {
         }catch(Exception e) {
             e.printStackTrace();
         }
-        return "Signupquery end";
     }
 
-    public boolean chk_id_duplicate(String id) {
+    public String chk_id_duplicate(String id) {
+        String r_id = null;
         try {
             connDB();
-            con=dataFactory.getConnection();
-            String query="select id from user_table";
-            pstmt=con.prepareStatement(query.toString());
-            ResultSet rs=pstmt.executeQuery();
-            String u_id=rs.getString("u_id");
-            while(rs.next()) {
-                if (id == u_id) {
-                    rs.close();
-                    pstmt.close();
-                    con.close();
-                    return true;
+            String query="select u_id from user_table where u_id='"+id+"'";
+            pstmt = con.prepareStatement(query);
+            ResultSet rs = pstmt.executeQuery();
+            if(pstmt != null) {
+                while(rs.next()) {
+                    r_id = rs.getString("u_id");
                 }
             }
             rs.close();
             pstmt.close();
             con.close();
-
         }catch(Exception e) {
             e.printStackTrace();
         }
-        return false;
+        return r_id;
     }
     private void connDB() {
         try {
