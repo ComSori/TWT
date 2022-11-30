@@ -28,23 +28,29 @@ public class SignupServlet extends HttpServlet {
      */
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=utf-8");
-        //request id, pwd
-        String r_id = request.getParameter("id");
-        String r_pwd = request.getParameter("password");
-        String r_name = request.getParameter("name");
-
-        SignupDAO dao = new SignupDAO(r_id, r_pwd, r_name);
         response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();
+        //request id, pwd
 
-        response.sendRedirect("login_page.html");
+        String r_id = request.getParameter("r_id");
+        String r_pwd = request.getParameter("user_PW");
+        String r_name = request.getParameter("user_name");
 
-        if(dao.chk_id_duplicate(r_id)) {
-            out.println("<script>alert(" + dao.Signupquery() + ");</script>");
+        SignupDAO dao = new SignupDAO(r_id, r_pwd, r_name);
+
+        String result = dao.chk_id_duplicate(r_id);
+
+        if(result == null) {
+            try {
+                dao.SignupQuery();
+                out.println("<script> alert('회원가입 성공!'); location.href='login_page.html';</script>");
+            }catch(Exception e) {
+                e.printStackTrace();
+            }
         } else {
-            out.println("<script>alert('회원가입 실패'); location.href='login_page.html#signup_pos'; </script>");
+            out.println("<script> alert('중복된 ID 입니다22.'); window.history.back(); </script>");
         }
+
         out.close();
     }
 
