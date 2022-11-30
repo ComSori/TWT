@@ -40,17 +40,24 @@ public class SignupServlet extends HttpServlet {
 
         String result = dao.chk_id_duplicate(r_id);
 
-        if(result == null) {
-            try {
-                dao.SignupQuery();
-                out.println("<script> alert('회원가입 성공!'); location.href='login_page.html';</script>");
-            }catch(Exception e) {
-                e.printStackTrace();
-            }
+        if("".equals(r_id)){
+            out.println("<script> alert('아이디를입력해주세요.'); window.history.back(); </script>");
+        } else if("".equals(r_pwd)) {
+            out.println("<script> alert('비밀번호를입력해주세요.'); window.history.back(); </script>");
+        } else if("".equals(r_name)) {
+            out.println("<script> alert('이름을입력해주세요.'); window.history.back(); </script>");
         } else {
-            out.println("<script> alert('중복된 ID 입니다22.'); window.history.back(); </script>");
+            if (result == null) {
+                try {
+                    dao.SignupQuery();
+                    out.println("<script> alert('회원가입 성공!'); location.href='login_page.html';</script>");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                out.println("<script> alert('중복된 ID 입니다.'); window.history.back(); </script>");
+            }
         }
-
         out.close();
     }
 

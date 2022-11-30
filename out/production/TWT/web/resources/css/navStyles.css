@@ -62,18 +62,13 @@
   --bs-body-line-height: 1.5;
   --bs-body-color: #212529;
   --bs-body-bg: #fff;
+  scroll-behavior: auto;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  :root {
-    scroll-behavior: smooth;
-  }
 }
 
 body {
@@ -2747,6 +2742,7 @@ progress {
   margin-right: 1rem;
   font-size: 1.25rem;
   white-space: nowrap;
+  border:none;
 }
 .navbar-nav {
   display: flex;
@@ -4578,6 +4574,7 @@ blockquote {
   text-align:center;
   vertical-align: middle;
   padding:0px;
+  border:0px;
 }
 #mainNav .navbar-toggler {
   font-size: 0.75rem;
@@ -4602,6 +4599,7 @@ blockquote {
     background:white;
     transition-duration:0.5s;
     margin-right:0px;
+    border:none;
   }
   #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
     color:white;
@@ -4761,4 +4759,8 @@ header.masthead .post-heading .meta a {
 #login_info {
   min-width:250px;
   text-align: right;
+}
+
+#mainNav button {
+  border:none;
 }
