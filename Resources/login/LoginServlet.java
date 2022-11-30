@@ -22,7 +22,11 @@ public class LoginServlet extends HttpServlet {
         LoginVO loginVO = dao.LoginQuery();
         //String db_id = loginVO.getId();
         String db_pwd = loginVO.getPwd();
-
+        /*향후 설정
+        cookie 만료시간 설정
+        SQL injection등 시큐어코딩
+        디버깅
+         */
         if ("".equals(r_pwd)) {
             PrintWriter out=response.getWriter();
             out.println("<script>alert('아이디나 패스워드를 입력하세요'); location.href='login_page.html';</script>");
