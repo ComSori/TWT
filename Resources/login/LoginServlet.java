@@ -24,6 +24,7 @@ public class LoginServlet extends HttpServlet {
         String db_pwd = loginVO.getPwd();
         /*향후 설정
         cookie 만료시간 설정
+        취약한 비밀번호 입력 제한
         SQL injection등 시큐어코딩
         디버깅
          */
