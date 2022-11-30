@@ -16,7 +16,24 @@
     <link href="resources/css/navStyles.css" rel="stylesheet" />
     <link href="resources/css/main_page.css" rel="stylesheet" />
     <script type="text/javascript" src="resources/js/navScripts.js"></script>
+    <script type="text/javascript">
+        window.onload = function() {
+            // 페이지 로딩시 메인 부분으로 이동
+            window.scrollTo({left:document.getElementById('main_page_container').offsetLeft, top:0, behavior:"auto"});
+            // 이동 후 부드러운 스크롤 추가
+            document.documentElement.style.setProperty('scroll-behavior', 'smooth');
 
+            // overriding navScripts
+            u_name = getCookie("name");
+            if(u_name){
+                document.getElementById("login_info").innerText += u_name + "님 환영합니다.";
+            }
+            else {
+                alert('로그인 후 이용해주세요');
+                location.href='login_page.html';
+            }
+        }
+    </script>
 </head>
 <body>
 <div id="main_page_container">
@@ -49,11 +66,11 @@
     <!-- Main Content-->
     <div class="main_Content">
         <div>
-
+            <!-- 본인 팀 선택부분 만들예정 db or session으로 값 불러오기 -->
         </div>
         <div>
-            <a href="#makeTeam_content">make team</a>
-            <a href="#joinTeam_content">join team</a>
+            <a href="#makeTeam_content" class="formLink" id="make_button">make team</a>
+            <a href="#joinTeam_content" class="formLink" id="join_button">join team</a>
         </div>
     </div>
     <!-- Footer-->
@@ -128,11 +145,7 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    window.onload = function() {
-        window.scrollTo({left:document.getElementById('main_page_container').offsetLeft, top:0, behavior:"auto"});
-    }
-</script>
+
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->

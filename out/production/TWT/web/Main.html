@@ -16,6 +16,24 @@
     <link href="resources/css/navStyles.css" rel="stylesheet" />
     <link href="resources/css/main_page.css" rel="stylesheet" />
     <script type="text/javascript" src="resources/js/navScripts.js"></script>
+    <script type="text/javascript">
+        window.onload = function() {
+            // 페이지 로딩시 메인 부분으로 이동
+            window.scrollTo({left:document.getElementById('main_page_container').offsetLeft, top:0, behavior:"auto"});
+            // 이동 후 부드러운 스크롤 추가
+            document.documentElement.style.setProperty('scroll-behavior', 'smooth');
+
+            // overriding navScripts
+            u_name = getCookie("name");
+            if(u_name){
+                document.getElementById("login_info").innerText += u_name + "님 환영합니다.";
+            }
+            else {
+                alert('로그인 후 이용해주세요');
+                location.href='login_page.html';
+            }
+        }
+    </script>
 </head>
 <body>
 <div id="main_page_container">
@@ -36,7 +54,7 @@
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
         <div class="container px-4 px-lg-5">
             <div class="navbar-brand nav-logo">TWT</div>
-            <a class="navbar-brand this-page" href="Main.html">Main</a>
+            <a class="navbar-brand this-page" href="Main.html#main_page_container">Main</a>
             <a class="navbar-brand" href="TimeTable.html">TimeTable</a>
             <a class="navbar-brand" href="WorkSpace.html">WorkSpace</a>
             <div class="collapse navbar-collapse" id="navbarResponsive"></div>
@@ -47,8 +65,13 @@
 
     <!-- Main Content-->
     <div class="main_Content">
-        <a href="#makeTeam_pos">make team</a>
-        <a href="#joinTeam_pos">join team</a>
+        <div>
+
+        </div>
+        <div>
+            <a href="#makeTeam_content">make team</a>
+            <a href="#joinTeam_content">join team</a>
+        </div>
     </div>
     <!-- Footer-->
     <footer class="border-top">
@@ -88,9 +111,40 @@
     </footer>
 </div>
 
-<a id="makeTeam_pos"></a>
-<a id="main_pos"></a>
-<a id="joinTeam_pos"></a>
+<div id="makeTeam_content">
+    <div class="team_content">
+        <h1 class="form_logo">팀 생 성</h1>
+        <form class="form_container" action="#" method = "post">
+            <!-- TODO action 채우기 -->
+            <input type="text" placeholder="팀 이름 입력" id="#" class="input_box" name="team_name">
+            <input type="submit" class="input_box submit_button" value="제 출">
+        </form>
+        <div class="signup">
+            <a href="#main_page_container">
+                <!-- TODO action 채우기 -->
+                팀 생성 취소
+            </a>
+        </div>
+    </div>
+</div>
+
+<div id="joinTeam_content">
+    <div class="team_content">
+        <h1 class="form_logo">팀 가 입</h1>
+        <form class="form_container" action="#" method = "post">
+            <!-- TODO action 채우기 -->
+            <input type="text" placeholder="팀 이름 입력" id="" class="input_box" name="team_name">
+            <input type="submit" class="input_box submit_button" value="제 출">
+        </form>
+        <div class="signup">
+            <a href="#main_page_container">
+                <!-- TODO action 채우기 -->
+                팀 생성 취소
+            </a>
+        </div>
+    </div>
+</div>
+
 
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
