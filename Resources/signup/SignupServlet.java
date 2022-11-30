@@ -32,7 +32,7 @@ public class SignupServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         //request id, pwd
 
-        String r_id = request.getParameter("r_id");
+        String r_id = request.getParameter("user_ID");
         String r_pwd = request.getParameter("user_PW");
         String r_name = request.getParameter("user_name");
 

@@ -31,10 +31,10 @@ public class SignupIdCheckServlet extends HttpServlet {
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
         //request id
-        String r_id = request.getParameter("user_ID");
+        String r_id = request.getParameter("r_id");
         SignupDAO dao = new SignupDAO(r_id);
-        // r_id 값이 안넘어옴 -> submit으로 한게 아니라서?
-        out.println("<script> alert('" + request.getParameter("user_ID") + dao.chk_id_duplicate(r_id) + "');</script>");
+
+        out.println("<script> alert('" + r_id + dao.chk_id_duplicate(r_id) + "');</script>");
         String result = dao.chk_id_duplicate(r_id);
 
         if(result == null) { // 값이 반환될 경우 -> db에 이미 값이 있음(중복)
