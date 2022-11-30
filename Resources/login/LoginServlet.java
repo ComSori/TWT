@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet {
             for(int i=0;i<list.size();i++) {
                 session.setAttribute("team" + i, list.team_id);
              */
-            Cookie cookie = new Cookie("name", loginVO.getId());
+            Cookie cookie = new Cookie("name", loginVO.getName());
             response.addCookie(cookie);
             response.sendRedirect("Main.html");
         } else {
