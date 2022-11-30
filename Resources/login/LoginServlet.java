@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
             out.println("<script>alert('아이디나 패스워드를 입력하세요'); location.href='login_page.html';</script>");
             out.flush();
         } else if(db_pwd.equals(r_pwd)){
-            Cookie cookie = new Cookie("name", loginVO.getId());
+            Cookie cookie = new Cookie("name", loginVO.getName());
             response.addCookie(cookie);
             response.sendRedirect("Main.html");
         }else {

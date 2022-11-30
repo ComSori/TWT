@@ -1,41 +1,37 @@
-/*!
-* Start Bootstrap - Clean Blog v6.0.8 (https://startbootstrap.com/theme/clean-blog)
-* Copyright 2013-2022 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-clean-blog/blob/master/LICENSE)
-*/
-window.addEventListener('DOMContentLoaded', () => {
-    let scrollPos = 0;
-    const mainNav = document.getElementById('mainNav');
-    const headerHeight = mainNav.clientHeight;
-    window.addEventListener('scroll', function() {
-        /*       console.log(scroll);
-               const currentTop = document.body.getBoundingClientRect().top * -1;
+var u_name;
 
-               if(currentTop > 200) {
-                   mainNav.classList.add('is-visible', 'is-fixed');
-               } else {
-                   mainNav.classList.remove('is-visible', 'is-fixed');
-               }
+window.onload = function() {
+    u_name = getCookie("name");
+    if(u_name){
+        document.getElementById("login_info").innerText += u_name + "님 환영합니다.";
+    }
+    else {
+        alert('로그인 후 이용해주세요');
+        location.href='login_page.html';
+    }
+}
 
+function getCookie(name) {
+    var cookieKey = name + "=";
+    var result = "";
+    const cookieArr = document.cookie.split(";");
 
+    for(var i = 0; i < cookieArr.length; i++) {
+        if(cookieArr[i][0] === " ") {
+            cookieArr[i] = cookieArr[i].substring(1);
+        }
 
-               if ( currentTop < scrollPos) {
-                   // Scrolling Up
-                   if (currentTop > 0 && mainNav.classList.contains('is-fixed')) {
-                       mainNav.classList.add('is-visible');
-                   } else {
-                       console.log(currentTop);
-                       mainNav.classList.remove('is-visible', 'is-fixed');
-                   }
-               } else {
-                   // Scrolling Down
-                   mainNav.classList.remove(['is-visible']);
-                   if (currentTop > headerHeight && !mainNav.classList.contains('is-fixed')) {
-                       mainNav.classList.add('is-fixed');
-                   }
-               }
+        if(cookieArr[i].indexOf(cookieKey) === 0) {
+            result = cookieArr[i].slice(cookieKey.length, cookieArr[i].length);
+            return result;
+        }
+    }
+    return result;
+}
 
-               scrollPos = currentTop;
-       */
-    });
-})
+function logout() {
+    // 세션 초기화
+    document.cookie = 'name=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
+    // 로그인 페이지로 이동
+    location.href='login_page.html';
+}

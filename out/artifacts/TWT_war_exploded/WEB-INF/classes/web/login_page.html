@@ -5,14 +5,6 @@
   <title>login</title>
   <link rel="stylesheet" href="resources/css/login_page.css">
   <script type="text/javascript" src="resources/js/login_page.js"></script>
-<!--  <script type="text/javascript">
-    window.onload = function() {
-      setTimeout(function() {
-        scrollTo(0,0);
-      }, 0);
-    }
-  </script>
--->
 </head>
 <body>
 <div class="login_main">
@@ -38,14 +30,13 @@
 <a id="signup_pos"></a>
   <div class="login_main signup_main">
     <h1>회원가입</h1>
+    <!--<form class="container_check" action="/id_check" method="post">
 
-    <form class="container_check" action="/id_check" method="post">
-      ID
-      <input type="submit" class="dup_check_button" name="user_IDcheck" value="아이디 중복 확인">
-    </form>
+    </form> -->
     <form class="container" name="signup" action="/signup" method="post">
-      <input type="text" class="account" name="user_ID" id="user_ID" placeholder="아이디 입력" >
-
+      ID
+      <input type="button" class="dup_check_button" name="user_IDcheck" value="아이디 중복 확인" onclick="chk_id_dup()">
+      <input type="text" class="account" name="user_ID" id="user_ID" placeholder="아이디 입력">
       PassWord<br>
       <input type="password" name="user_PW" class="account" value="" placeholder="비밀번호 입력">
       Name<br>
