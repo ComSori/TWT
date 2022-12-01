@@ -33,5 +33,5 @@ function logout() {
     // 세션 초기화
     document.cookie = 'name=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
     // 로그인 페이지로 이동
-    location.href='login_page.html';
+    location.href="login_page.html";
 }

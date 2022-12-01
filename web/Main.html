@@ -34,9 +34,6 @@
                 document.getElementById("logout_btn").style.display = "none";
             }
         }
-        function click_btn() {
-
-        }
     </script>
 </head>
 <body>
@@ -63,16 +60,34 @@
             <a class="navbar-brand" href="WorkSpace.html">WorkSpace</a>
             <div class="collapse navbar-collapse" id="navbarResponsive"></div>
             <div id="login_info"></div>
-            <button type="button" id="login_btn" class="navbar-brand" onclick="logout()">login</button>
+            <button type="button" id="login_btn" class="navbar-brand" onclick="login()">login</button>
             <button type="hidden" id="logout_btn" class="navbar-brand" onclick="logout()">logout</button>
         </div>
     </nav>
 
     <!-- Main Content-->
     <div class="main_Content">
-        <div class="main_content_box">
+        <h1>팀 선택</h1><br>
+        <div class="main_content_box" id="team_select_contents">
             <!-- 본인 팀 선택부분 만들예정 db or session으로 값 불러오기 -->
-
+            <button>
+                test
+            </button>
+            <button>
+                test2
+            </button>
+            <button>
+                test2
+            </button>
+            <button>
+                test2
+            </button>
+            <button>
+                test2
+            </button>
+            <button>
+                test2
+            </button>
         </div>
         <div class="main_content_box">
             <a href="#makeTeam_content" class="formLink" id="make_button">make team</a>
