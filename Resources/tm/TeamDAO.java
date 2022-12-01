@@ -35,7 +35,18 @@ public class TeamDAO {
             e.printStackTrace();
         }
     }
-    public void joinTeam(ArrayList li){
+    public void joinTeam(String t_id,String s_id){
+        try{
+            connDB();
+            String query="INSERT INTO t_associate VALUES('"+s_id+"','"+t_id+")";
+            pstmt=con.prepareStatement(query);
+            pstmt.executeUpdate();
+
+            pstmt.close();
+            con.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
 
     }
     private void connDB(){
