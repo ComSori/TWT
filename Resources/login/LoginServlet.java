@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
         /*향후 설정
         cookie 만료시간 설정
         취약한 비밀번호 입력 제한
-        SQL injection등 시큐어코딩
+        SQL injection 방지등 보안강화
         디버깅
          */
         if ("".equals(r_pwd)) {
@@ -33,6 +33,9 @@ public class LoginServlet extends HttpServlet {
             out.println("<script>alert('아이디나 패스워드를 입력하세요'); location.href='login_page.html';</script>");
             out.flush();
         } else if(db_pwd.equals(r_pwd)){
+            HttpSession session=request.getSession();
+            session.setAttribute("id",r_id);
+
             Cookie cookie = new Cookie("name", loginVO.getName());
             response.addCookie(cookie);
             response.sendRedirect("Main.html");
