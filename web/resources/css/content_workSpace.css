@@ -26,6 +26,15 @@
     height:50%;
     width:100%;
     background:blue;
+    position:sticky;
+    top:100px;
+}
+
+.side_Contents #login_info_logo {
+    text-align:center;
+    background:white;
+    padding:10px;
+    margin-top:20px;
 }
 
 .side_Contents #login_info_box {

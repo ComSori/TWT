@@ -14,9 +14,15 @@ body {
 .main_Content {
     width:100%;
     height:500px;
-    display:inline-block;
     text-align:center;
     padding:30px 30px 50px 50px;
+    display: inline-block;
+}
+
+#team_direct_contents {
+    padding-left:70px;
+    padding-right:70px;
+    margin-bottom:20px;
 }
 
 .formLink {
@@ -27,14 +33,15 @@ body {
     border-radius: 20px;
     text-align:center;
     font-weight:bold;
-    margin:50px;
+    margin:0px;
     align-content: center;
 }
 
 .main_content_box {
-    width:100%;
+    width:1050px;
     display:flex;
     justify-content: space-between;
+    margin:auto;
 
 }
 
@@ -53,19 +60,24 @@ body {
 }
 
 #team_select_contents button {
-    width:150px;
-    height:150px;
+    min-width:150px;
+    min-height:150px;
     border: 5px solid lightgray;
     border-radius: 20px;
-    margin-left:25px;
+    margin-left:10px;
+    margin-right:10px;
 
 }
 
-#make_button{
+#create_button{
+    width:260px;
+    height:100px;
     float:left;
 }
 
 #join_button{
+    width:260px;
+    height:100px;
     float:right;
 }
 
@@ -135,16 +147,16 @@ body {
 
 
 /**********************
- * make team contents *
+ * create team contents *
  **********************/
-#makeTeam_content {
+#createTeam_content {
     height:100%;
     left:0px;
     position:absolute;
 }
 
 /**********************
- * make team contents *
+ * join team contents *
  **********************/
 
 #joinTeam_content {
