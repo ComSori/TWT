@@ -16,6 +16,18 @@
     <link href="resources/css/navStyles.css" rel="stylesheet" />
     <link href="resources/css/content_timeTable.css" rel="stylesheet" />
     <script type="text/javascript" src="resources/js/navScripts.js"></script>
+<!--    <script type="text/javascript">-->
+<!--        window.onload = function() {-->
+<!--            // u_name = getCookie("name");-->
+<!--            // if(u_name){-->
+<!--                location.href='/Timetable';-->
+<!--            // }-->
+<!--            // else {-->
+<!--            //     alert('로그인 후 이용해주세요');-->
+<!--            //     location.href='login_page.html';-->
+<!--            // }-->
+<!--        }-->
+<!--    </script>-->
 </head>
 <body>
 <!-- Page Header-->
@@ -47,6 +59,9 @@
 <!-- Main Content-->
 <div class="main_Content gx-4 gx-lg-5 justify-content-center">
     <div id="sideBar">
+        <form action = "/Timetable" method="post">
+            <input type = "submit" value = "Test">
+        </form>
     </div>
     <div class="timeTable_Contents">
         <table>

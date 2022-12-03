@@ -42,5 +42,14 @@
         <url-pattern>/signup</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Timetable</servlet-name>
+        <servlet-class>Resources.timetable.TimetableServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Timetable</servlet-name>
+        <url-pattern>/Timetable</url-pattern>
+    </servlet-mapping>
 
 </web-app>
