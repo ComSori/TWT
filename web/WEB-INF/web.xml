@@ -52,4 +52,14 @@
         <url-pattern>/Timetable</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>button</servlet-name>
+        <jsp-file>/resources/jsp/button.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>button</servlet-name>
+        <url-pattern>/button</url-pattern>
+    </servlet-mapping>
+
 </web-app>

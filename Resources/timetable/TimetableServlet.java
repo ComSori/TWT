@@ -1,13 +1,9 @@
 package Resources.timetable;
 
-import Resources.timetable.TimetableDAO;
-import Resources.timetable.TimetableVO;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 public class TimetableServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -33,7 +29,7 @@ public class TimetableServlet extends HttpServlet {
         TimetableVO_list tabVO_list = dao.Load_member();//같은 팀원 id 저장된 timetablevo arraylist 반환
 
         request.setAttribute("vo_list",tabVO_list);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Resources/timetable/button.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/button");
         requestDispatcher.forward(request, response);
     }
 }

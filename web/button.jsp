@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Insert title here</title>
-    <script type="text/javascript" src="/resources/js/timetable.js"></script>
+    <script type="text/javascript" src="timetable.js"></script>
 </head>
 <body>
 </body>
@@ -30,15 +30,7 @@
         u_id = vo_list.get(i).getUid();
 %>
         <script>
-            document.getElementById
-            alert("test");
-            var board = document.getElementById("sideBar");
-            var newButton = document.createElement("button");
-            newButton.setAttribute("id", <%=u_id%>);
-            newButton.setAttribute("value", <%=u_id%>);
-            newButton.setAttribute("type", "button");
-            board.append(newButton);
-            location.href="TimeTable.html";
+            create_button(<%=u_id%>);
         </script>
 <%
     }

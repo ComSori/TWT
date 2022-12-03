@@ -1,16 +1,16 @@
 <%@ page import="Resources.timetable.TimetableVO_list" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Insert title here</title>
-    <script type="text/javascript" src="timetable.js"></script>
-</head>
-<body>
-</body>
-</html>
+<%--<!DOCTYPE html>--%>
+<%--<html>--%>
+<%--<head>--%>
+<%--    <meta charset="UTF-8">--%>
+<%--    <title>Insert title here</title>--%>
+<%--    <script type="text/javascript" src="timetable.js"></script>--%>
+<%--</head>--%>
+<%--<body>--%>
+<%--</body>--%>
+<%--</html>--%>
 <%
     TimetableVO_list vo_list = (TimetableVO_list) request.getAttribute("vo_list");
     String u_id = new String();
