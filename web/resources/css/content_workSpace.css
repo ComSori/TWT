@@ -26,12 +26,30 @@
     height:50%;
     width:100%;
     background:blue;
+    position:sticky;
+    top:100px;
+}
+
+.side_Contents #login_info_logo {
+    text-align:center;
+    background:white;
+    padding:10px;
+    margin-top:20px;
+}
+
+.side_Contents #login_info_box {
+    margin:0px;
+    padding:5px;
+    border:3px solid lightgray;
+    border-radius:20px;
 }
 
 .side_Contents .chat_menu {
     height:50%;
     width:100%;
+    /*
     background:yellow;
+    */
 }
 
 /******************************************
