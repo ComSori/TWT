@@ -40,6 +40,23 @@ public class LoginDAO {
         }
         return vo;
     }
+    public String loginGetTeam() {
+        String result="";
+        try {
+            connDB();
+            String query = "SELECT GROUP_CONCAT(t_id SEPARATOR ':') AS result FROM t_associate WHERE uid='" + Id + "'";
+            pstmt=con.prepareStatement(query);
+            ResultSet rs=pstmt.executeQuery();
+            while(rs.next()){
+                result=rs.getString("result");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
     private void connDB() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
