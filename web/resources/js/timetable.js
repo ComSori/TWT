@@ -1,4 +1,3 @@
-
 // function create_button(u_id) {
 //     alert("test");
 //     var board = document.getElementById("sideBar");
@@ -10,7 +9,6 @@
 //     // newMemo.style.left = posX;
 //     board.append(newButton);
 // }
-
 // function create_button(){
 //     var board = document.getElementById("sideBar");
 //     // let cnt = sessionStorage.getItem("u_id_cnt");

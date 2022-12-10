@@ -45,3 +45,18 @@ table {
     border : 1px solid;
     height:4%;
 }
+#sideBar button {
+    display: block;
+}
+.col {
+    background: blue;
+    border: 1px solid;
+    width: 100%;
+    color: white;
+    height: 12.5%;
+}
+.cols {
+    height: 100%;
+    z-index: 1;
+    position: absolute;
+}
