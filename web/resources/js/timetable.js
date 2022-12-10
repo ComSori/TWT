@@ -10,7 +10,6 @@
 //     // newMemo.style.left = posX;
 //     board.append(newButton);
 // }
-
 // function create_button(){
 //     var board = document.getElementById("sideBar");
 //     // let cnt = sessionStorage.getItem("u_id_cnt");
