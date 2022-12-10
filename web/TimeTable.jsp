@@ -30,12 +30,7 @@
     %>
     window.onload = function() {
       <%
-        TimetableVO_list vo_list = (TimetableVO_list) session.getAttribute("vo_list");
-//        ArrayList<String> u_id_list = (ArrayList) session.getAttribute("u_id_list");
-//        int u_id_cnt = (int)session.getAttribute("u_id_cnt");
-      %>
-        <%--alert(<%=u_id_cnt%>)--%>
-      <%
+        TimetableVO_list vo_list = (TimetableVO_list) request.getAttribute("vo_list");
         for(TimetableVO c:vo_list){
           tmp_id = c.getUid();
           tmp_name = c.getU_name();
@@ -120,10 +115,6 @@
 <!-- Main Content-->
 <div class="main_Content gx-4 gx-lg-5 justify-content-center">
   <div id="sideBar" class = "sideBar">
-<%--    <form action = "/Timetable" method="post">--%>
-<%--      <input type = "submit" value = "Test">--%>
-<%--    </form>--%>
-<%--    <input type="button" value ="createbutton" onClick="tobutton()">--%>
   </div>
   <div class="timeTable_Contents">
     <table>
