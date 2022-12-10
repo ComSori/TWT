@@ -37,7 +37,7 @@ public class TimetableServlet extends HttpServlet {
 //        session.setAttribute("u_id_list",u_id_list);
         session.setAttribute("u_id_cnt",+tabVO_list.size());
         session.setAttribute("vo_list",tabVO_list);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("TimeTable.html");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("TimeTable.jsp");
         requestDispatcher.forward(request, response);
     }
 }

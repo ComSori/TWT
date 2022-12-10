@@ -28,11 +28,11 @@ public class TimetableDAO {
                 u_id = rs.getString("u_id");
                 t_id = rs.getString("t_id");
                 String query2="select * from time_table where uid_for='"+u_id+"'";
-                pstmt=con.prepareStatement(query);
+                pstmt=con.prepareStatement(query2);
                 ResultSet rs2=pstmt.executeQuery();
+                String user_name="",start="",end="",lecture="",lec_code="";
+                int week = 0;
                 while(rs2.next()){
-                    String user_name="",start="",end="",lecture="",lec_code="";
-                    int week = 0;
                     user_name = rs2.getString("user_name");
                     week = rs2.getInt("week");
                     start = rs2.getString("start");
@@ -45,6 +45,7 @@ public class TimetableDAO {
                 vo.setUid(u_id);
                 vo.setTid(t_id);
                 vo.setList(list);
+                vo.setU_name(user_name);
 
                 vo_list.add(vo);
             }
