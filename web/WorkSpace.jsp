@@ -27,10 +27,8 @@
       if(getComputedStyle(document.getElementById("memo_inputBox")).display == "none"){
         var x = event.offsetX;
         var y = event.offsetY;
-        console.log(event.target.getAttribute("id"));
 
         if(event.target.getAttribute("id") == "memo_controlBar") {
-
           x = parseInt(x) + parseInt(event.target.parentElement.style.left.replace("px", ""));
           y = parseInt(y) + parseInt(event.target.parentElement.style.top.replace("px", ""));
         } else if(event.target.getAttribute("id") == "memo_inputText") {
@@ -41,7 +39,7 @@
         box.style.display = "inline-block";
         box.style.left = x + "px";
         box.style.top = y + "px";
-        document.getElementById("text").setAttribute("value", document.getElementById("memo_inputText").value);
+
         document.getElementById("posX").setAttribute("value", x);
         document.getElementById("posY").setAttribute("value", y);
 
@@ -62,13 +60,14 @@
       /******************  TODO - DB에 입력
        *  속성 가져오기   *
        *****************/
+      document.getElementById("text").setAttribute("value", document.getElementById("memo_inputText").value);
       var text = document.getElementById("memo_inputText").value;
       var posX = document.getElementById("memo_inputBox").style.left;
       var posY = document.getElementById("memo_inputBox").style.top;
       let memoBox = document.memoBox;
       if(text != null) {
         memoBox.method="post"
-        memoBox.action="/MemoAdd";
+        memoBox.action="/memoAdd";
         memoBox.submit();
         /*
         create_memo_data(text, posX, posY);
