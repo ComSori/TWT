@@ -10,10 +10,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class TeamBuildServlet extends HttpServlet {
-    /*향후 계획
-     팀 실제 소속인지 검증
-     */
-
     //설계 계획 세션인증->팀 생성페이지->팀생성 DB 입력-> 생성된 팀 선택설정
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         response.setContentType("text/html;charset=UTF-8");
@@ -25,12 +21,14 @@ public class TeamBuildServlet extends HttpServlet {
         if(s_uid.equals("")){
             PrintWriter out=response.getWriter();
             out.println("<script>alert('login이 필요합니다.'); location.href='login_page.html';</script>");
+            destroy();
         }
 
         //null check
         if(r_tname.equals("")||r_tid.equals("")){
             PrintWriter out =response.getWriter();
             out.println("<script>alert('id혹은이름을 공란없이 입력해주세요');window.history.back();</script>");
+            destroy();
         }
 
         //DB

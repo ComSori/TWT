@@ -8,11 +8,13 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class TeamJoinServlet extends HttpServlet {
+public class TeamSelectServlet extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=utf-8");
+        response.setContentType("text/html;charset=UTF-8");
 
-        String r_tid=request.getParameter("join_tid");
+        String r_tid=request.getParameter("team_id");
+
         //session check
         HttpSession session = request.getSession(true);
         String s_uid=(String)session.getAttribute("id");
@@ -24,20 +26,12 @@ public class TeamJoinServlet extends HttpServlet {
 
         //null check
         if(r_tid.equals("")){
-            PrintWriter out =response.getWriter();
-            out.println("<script>alert('id를 공란없이 입력해주세요');window.history.back();</script>");
+            PrintWriter out=response.getWriter();
+            out.println("<script>alert('팀 id를 공란없이 입력해주세요');window.history.back();</script>");
             destroy();
         }
-
         //DB
         TeamDAO dao=new TeamDAO();
 
-        if(dao.chk_team(r_tid).equals("")){
-            PrintWriter out=response.getWriter();
-            out.println("<script>alert('존재하지 않는 팀입니다.');window.history.back();</script>");
-        }else{
-            dao.joinTeam(r_tid,s_uid);
-            session.setAttribute("team",r_tid);
-        }
     }
 }

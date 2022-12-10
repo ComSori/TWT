@@ -49,6 +49,21 @@ public class TeamDAO {
         }
 
     }
+    public TeamJoinVO selectTeam(String uid,String tid){
+        try{
+            connDB();
+            String query="SELECT t_id from t_associate where u_id='"+uid+"' AND t_id='"+tid+"'";
+            pstmt=con.prepareStatement(query);
+            ResultSet rs=pstmt.executeQuery();
+            while(rs.next()){
+                rs.getString("t_id");
+            }
+            pstmt.close();
+            con.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
     private void connDB(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
