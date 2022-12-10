@@ -5,8 +5,8 @@
          version="4.0">
 
     <welcome-file-list> <!-- 시작 페이지 순서 -->
-        <welcome-file>Main.html</welcome-file>
         <welcome-file>login_page.html</welcome-file>
+        <welcome-file>Main.html</welcome-file>
         <welcome-file>TimeTable.html</welcome-file>
         <welcome-file>WorkSpace.html</welcome-file>
     </welcome-file-list>
@@ -42,5 +42,24 @@
         <url-pattern>/signup</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Timetable</servlet-name>
+        <servlet-class>Resources.timetable.TimetableServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Timetable</servlet-name>
+        <url-pattern>/Timetable</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>button</servlet-name>
+        <jsp-file>/resources/jsp/button.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>button</servlet-name>
+        <url-pattern>/button</url-pattern>
+    </servlet-mapping>
 
 </web-app>
