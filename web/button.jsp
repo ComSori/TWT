@@ -55,7 +55,8 @@
   for(String c:u_id_list){
     out.println(c);
 %>
-<script>create_button(<%=c%>);</script>
+<script>alert("<%=c%>")</script>
+<!--<script>create_button(<%=c%>);</script>-->
 <%
   }
 %>
