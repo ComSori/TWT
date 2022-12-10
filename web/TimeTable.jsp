@@ -22,25 +22,23 @@
   <link href="resources/css/navStyles.css" rel="stylesheet" />
   <link href="resources/css/content_timeTable.css" rel="stylesheet" />
   <script type="text/javascript" src="resources/js/navScripts.js"></script>
-  <script type="text/javascript" src="resources/js/timetable.js"></script>
   <script type = "text/javascript">
     <%
     String tmp_id = new String();
     String tmp_name = new String();
+    ArrayList<Class_list>[] collapse = new ArrayList[24];
+    for (int i = 0;i < 24;i++){
+      collapse[i] = new ArrayList<Class_list>();
+    }
     %>
     window.onload = function() {
       <%
-        TimetableVO_list vo_list = (TimetableVO_list) session.getAttribute("vo_list");
-//        ArrayList<String> u_id_list = (ArrayList) session.getAttribute("u_id_list");
-//        int u_id_cnt = (int)session.getAttribute("u_id_cnt");
-      %>
-        <%--alert(<%=u_id_cnt%>)--%>
-      <%
+        TimetableVO_list vo_list = (TimetableVO_list) request.getAttribute("vo_list");
         for(TimetableVO c:vo_list){
           tmp_id = c.getUid();
           tmp_name = c.getU_name();
       %>
-        create_button("<%=tmp_id%>","<%=tmp_name%>");
+      create_button("<%=tmp_id%>","<%=tmp_name%>");
       <%
         }
       %>
@@ -61,19 +59,28 @@
       var board = document.getElementsByClassName("cols");
       var newdiv;
       var text;
+      // var colorCode  = "#" + Math.round(Math.random() * 0xffffff).toString(16);
       <%
+      ArrayList<String> color = new ArrayList<String>();
+      int i = 0;
       for(TimetableVO c:vo_list){
+        color.add("#"+String.format("%x",Math.round(Math.random()*0xffffff)));
         for(Class_list l : c.getList()){
+
       %>
-          newdiv = document.createElement("div");
-          newdiv.setAttribute("class", "<%=c.getUid()%> col");
-          newdiv.setAttribute("style", "visibility : visible");
-          newdiv.setAttribute("id", "<%=c.getUid()%>");
-          text = document.createTextNode("<%=l.getUser_name()%>");
-          newdiv.appendChild(text);
-          board[<%=l.getWeek()%>].append(newdiv);
+      var divstart = document.querySelector(".grids<%=l.getWeek()%> .grid_<%=l.getStart()%>");
+      var divend = document.querySelector(".grids<%=l.getWeek()%> .grid_<%=l.getEnd()%>");
+      newdiv = document.createElement("div");
+      newdiv.setAttribute("class", "<%=c.getUid()%> col");
+      newdiv.setAttribute("style", "line-height : "+(divend.getBoundingClientRect().bottom-divstart.getBoundingClientRect().top)+"px; background : <%=color.get(i)%>; top : "+divstart.offsetTop+"px; "+"left : "+divstart.offsetLeft+"px; "+"width : "+divstart.clientWidth+"px; "+"height : "+(divend.getBoundingClientRect().bottom-divstart.getBoundingClientRect().top)+"px; visibility : visible;");
+      newdiv.setAttribute("id", "<%=c.getUid()%>");
+      newdiv.setAttribute("onmouseover","alert('<%=c.getUid()%>')")
+      text = document.createTextNode("<%=c.getU_name()%>");
+      newdiv.appendChild(text);
+      board[<%=l.getWeek()%>].append(newdiv);
       <%
         }
+        i++;
       }
       %>
     }
@@ -88,6 +95,9 @@
         }
       }
     }
+    // function showdetails(){
+    //
+    // }
   </script>
 </head>
 <body>
@@ -109,7 +119,7 @@
   <div class="container px-4 px-lg-5">
     <div class="navbar-brand nav-logo">TWT</div>
     <a class="navbar-brand" href="Main.html">Main</a>
-    <a class="navbar-brand this-page" href="TimeTable.html">TimeTable</a>
+    <a class="navbar-brand this-page" href="Timetable">TimeTable</a>
     <a class="navbar-brand" href="WorkSpace.html">WorkSpace</a>
     <div class="collapse navbar-collapse" id="navbarResponsive"></div>
     <div id="login_info"></div>
@@ -120,10 +130,6 @@
 <!-- Main Content-->
 <div class="main_Content gx-4 gx-lg-5 justify-content-center">
   <div id="sideBar" class = "sideBar">
-<%--    <form action = "/Timetable" method="post">--%>
-<%--      <input type = "submit" value = "Test">--%>
-<%--    </form>--%>
-<%--    <input type="button" value ="createbutton" onClick="tobutton()">--%>
   </div>
   <div class="timeTable_Contents">
     <table>
@@ -161,140 +167,224 @@
           <div class = "cols">
 
           </div>
-          <div class = "grids">
+          <div class = "grids grids0">
             <div class = "day">월</div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
+            <div class = "grid grid_0"></div>
+            <div class = "grid grid_1"></div>
+            <div class = "grid grid_2"></div>
+            <div class = "grid grid_3"></div>
+            <div class = "grid grid_4"></div>
+            <div class = "grid grid_5"></div>
+            <div class = "grid grid_6"></div>
+            <div class = "grid grid_7"></div>
+            <div class = "grid grid_8"></div>
+            <div class = "grid grid_9"></div>
+            <div class = "grid grid_10"></div>
+            <div class = "grid grid_11"></div>
+            <div class = "grid grid_12"></div>
+            <div class = "grid grid_13"></div>
+            <div class = "grid grid_14"></div>
+            <div class = "grid grid_15"></div>
+            <div class = "grid grid_16"></div>
+            <div class = "grid grid_17"></div>
+            <div class = "grid grid_18"></div>
+            <div class = "grid grid_19"></div>
+            <div class = "grid grid_20"></div>
+            <div class = "grid grid_21"></div>
+            <div class = "grid grid_22"></div>
+            <div class = "grid grid_23"></div>
           </div>
         </td>
         <td>
           <div class = "cols">
 
           </div>
-          <div class = "grids">
+          <div class = "grids grids1">
             <div class = "day">화</div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
+            <div class = "grid grid_0"></div>
+            <div class = "grid grid_1"></div>
+            <div class = "grid grid_2"></div>
+            <div class = "grid grid_3"></div>
+            <div class = "grid grid_4"></div>
+            <div class = "grid grid_5"></div>
+            <div class = "grid grid_6"></div>
+            <div class = "grid grid_7"></div>
+            <div class = "grid grid_8"></div>
+            <div class = "grid grid_9"></div>
+            <div class = "grid grid_10"></div>
+            <div class = "grid grid_11"></div>
+            <div class = "grid grid_12"></div>
+            <div class = "grid grid_13"></div>
+            <div class = "grid grid_14"></div>
+            <div class = "grid grid_15"></div>
+            <div class = "grid grid_16"></div>
+            <div class = "grid grid_17"></div>
+            <div class = "grid grid_18"></div>
+            <div class = "grid grid_19"></div>
+            <div class = "grid grid_20"></div>
+            <div class = "grid grid_21"></div>
+            <div class = "grid grid_22"></div>
+            <div class = "grid grid_23"></div>
           </div>
         </td>
         <td>
           <div class = "cols">
 
           </div>
-          <div class = "grids">
+          <div class = "grids grids2">
             <div class = "day">수</div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
+            <div class = "grid grid_0"></div>
+            <div class = "grid grid_1"></div>
+            <div class = "grid grid_2"></div>
+            <div class = "grid grid_3"></div>
+            <div class = "grid grid_4"></div>
+            <div class = "grid grid_5"></div>
+            <div class = "grid grid_6"></div>
+            <div class = "grid grid_7"></div>
+            <div class = "grid grid_8"></div>
+            <div class = "grid grid_9"></div>
+            <div class = "grid grid_10"></div>
+            <div class = "grid grid_11"></div>
+            <div class = "grid grid_12"></div>
+            <div class = "grid grid_13"></div>
+            <div class = "grid grid_14"></div>
+            <div class = "grid grid_15"></div>
+            <div class = "grid grid_16"></div>
+            <div class = "grid grid_17"></div>
+            <div class = "grid grid_18"></div>
+            <div class = "grid grid_19"></div>
+            <div class = "grid grid_20"></div>
+            <div class = "grid grid_21"></div>
+            <div class = "grid grid_22"></div>
+            <div class = "grid grid_23"></div>
           </div>
         </td>
         <td>
           <div class = "cols">
 
           </div>
-          <div class = "grids">
+          <div class = "grids grids3">
             <div class = "day">목</div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
+            <div class = "grid grid_0"></div>
+            <div class = "grid grid_1"></div>
+            <div class = "grid grid_2"></div>
+            <div class = "grid grid_3"></div>
+            <div class = "grid grid_4"></div>
+            <div class = "grid grid_5"></div>
+            <div class = "grid grid_6"></div>
+            <div class = "grid grid_7"></div>
+            <div class = "grid grid_8"></div>
+            <div class = "grid grid_9"></div>
+            <div class = "grid grid_10"></div>
+            <div class = "grid grid_11"></div>
+            <div class = "grid grid_12"></div>
+            <div class = "grid grid_13"></div>
+            <div class = "grid grid_14"></div>
+            <div class = "grid grid_15"></div>
+            <div class = "grid grid_16"></div>
+            <div class = "grid grid_17"></div>
+            <div class = "grid grid_18"></div>
+            <div class = "grid grid_19"></div>
+            <div class = "grid grid_20"></div>
+            <div class = "grid grid_21"></div>
+            <div class = "grid grid_22"></div>
+            <div class = "grid grid_23"></div>
           </div>
         </td>
         <td>
           <div class = "cols">
 
           </div>
-          <div class = "grids">
+          <div class = "grids grids4">
             <div class = "day">금</div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
+            <div class = "grid grid_0"></div>
+            <div class = "grid grid_1"></div>
+            <div class = "grid grid_2"></div>
+            <div class = "grid grid_3"></div>
+            <div class = "grid grid_4"></div>
+            <div class = "grid grid_5"></div>
+            <div class = "grid grid_6"></div>
+            <div class = "grid grid_7"></div>
+            <div class = "grid grid_8"></div>
+            <div class = "grid grid_9"></div>
+            <div class = "grid grid_10"></div>
+            <div class = "grid grid_11"></div>
+            <div class = "grid grid_12"></div>
+            <div class = "grid grid_13"></div>
+            <div class = "grid grid_14"></div>
+            <div class = "grid grid_15"></div>
+            <div class = "grid grid_16"></div>
+            <div class = "grid grid_17"></div>
+            <div class = "grid grid_18"></div>
+            <div class = "grid grid_19"></div>
+            <div class = "grid grid_20"></div>
+            <div class = "grid grid_21"></div>
+            <div class = "grid grid_22"></div>
+            <div class = "grid grid_23"></div>
           </div>
         </td>
         <td>
           <div class = "cols">
 
           </div>
-          <div class = "grids">
+          <div class = "grids grids5">
             <div class = "day">토</div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
+            <div class = "grid grid_0"></div>
+            <div class = "grid grid_1"></div>
+            <div class = "grid grid_2"></div>
+            <div class = "grid grid_3"></div>
+            <div class = "grid grid_4"></div>
+            <div class = "grid grid_5"></div>
+            <div class = "grid grid_6"></div>
+            <div class = "grid grid_7"></div>
+            <div class = "grid grid_8"></div>
+            <div class = "grid grid_9"></div>
+            <div class = "grid grid_10"></div>
+            <div class = "grid grid_11"></div>
+            <div class = "grid grid_12"></div>
+            <div class = "grid grid_13"></div>
+            <div class = "grid grid_14"></div>
+            <div class = "grid grid_15"></div>
+            <div class = "grid grid_16"></div>
+            <div class = "grid grid_17"></div>
+            <div class = "grid grid_18"></div>
+            <div class = "grid grid_19"></div>
+            <div class = "grid grid_20"></div>
+            <div class = "grid grid_21"></div>
+            <div class = "grid grid_22"></div>
+            <div class = "grid grid_23"></div>
           </div>
         </td>
         <td>
           <div class = "cols">
 
           </div>
-          <div class = "grids">
+          <div class = "grids grids6">
             <div class = "day">일</div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
+            <div class = "grid grid_0"></div>
+            <div class = "grid grid_1"></div>
+            <div class = "grid grid_2"></div>
+            <div class = "grid grid_3"></div>
+            <div class = "grid grid_4"></div>
+            <div class = "grid grid_5"></div>
+            <div class = "grid grid_6"></div>
+            <div class = "grid grid_7"></div>
+            <div class = "grid grid_8"></div>
+            <div class = "grid grid_9"></div>
+            <div class = "grid grid_10"></div>
+            <div class = "grid grid_11"></div>
+            <div class = "grid grid_12"></div>
+            <div class = "grid grid_13"></div>
+            <div class = "grid grid_14"></div>
+            <div class = "grid grid_15"></div>
+            <div class = "grid grid_16"></div>
+            <div class = "grid grid_17"></div>
+            <div class = "grid grid_18"></div>
+            <div class = "grid grid_19"></div>
+            <div class = "grid grid_20"></div>
+            <div class = "grid grid_21"></div>
+            <div class = "grid grid_22"></div>
+            <div class = "grid grid_23"></div>
           </div>
         </td>
       </tr>

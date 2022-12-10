@@ -21,6 +21,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" scope="PROVIDED" name="Tomcat 9" level="application_server_libraries" />
     <orderEntry type="library" exported="" scope="PROVIDED" name="mysql-connector-j-8.0.31" level="project" />
-    <orderEntry type="library" name="WEB-INF" level="project" />
+    <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
   </component>
 </module>

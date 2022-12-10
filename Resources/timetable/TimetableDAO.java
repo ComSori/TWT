@@ -23,13 +23,14 @@ public class TimetableDAO {
             ResultSet rs=pstmt.executeQuery();
             while(rs.next()) {
                 TimetableVO vo=new TimetableVO();
-                String u_id="",t_id="";
+                String u_id="",t_id="",u_name="";
                 ArrayList<Class_list> list = new ArrayList<Class_list>();
                 u_id = rs.getString("u_id");
                 t_id = rs.getString("t_id");
                 String query2="select * from time_table where uid_for='"+u_id+"'";
                 pstmt=con.prepareStatement(query2);
                 ResultSet rs2=pstmt.executeQuery();
+//                u_name = rs2.getString("user_name");
                 String user_name="",start="",end="",lecture="",lec_code="";
                 int week = 0;
                 while(rs2.next()){
