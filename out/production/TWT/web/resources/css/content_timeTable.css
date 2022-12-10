@@ -1,4 +1,4 @@
-.main_Content .sideBar{
+.main_Content #sideBar{
     width: 20%;
     height: 100%;
     background:black;
@@ -45,6 +45,13 @@ table {
     border : 1px solid;
     height:4%;
 }
-.sideBar > button{
-    width:100%;
+#sideBar button {
+    display: block;
+}
+.col {
+    background: blue;
+    border: 1px solid;
+    width: 100%;
+    color: white;
+    height: 12.5%;
 }

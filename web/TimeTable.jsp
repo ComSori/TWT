@@ -24,33 +24,69 @@
   <script type="text/javascript" src="resources/js/navScripts.js"></script>
   <script type="text/javascript" src="resources/js/timetable.js"></script>
   <script type = "text/javascript">
-    function tobutton(){
+    <%
+    String tmp_id = new String();
+    String tmp_name = new String();
+    %>
+    window.onload = function() {
       <%
         TimetableVO_list vo_list = (TimetableVO_list) session.getAttribute("vo_list");
-        ArrayList<String> u_id_list = (ArrayList) session.getAttribute("u_id_list");
-        int u_id_cnt = (int)session.getAttribute("u_id_cnt");
+//        ArrayList<String> u_id_list = (ArrayList) session.getAttribute("u_id_list");
+//        int u_id_cnt = (int)session.getAttribute("u_id_cnt");
       %>
-        alert(<%=u_id_cnt%>)
+        <%--alert(<%=u_id_cnt%>)--%>
       <%
         for(TimetableVO c:vo_list){
+          tmp_id = c.getUid();
+          tmp_name = c.getU_name();
       %>
-        create_button("<%=c.getUid()%>","<%=c.getU_name()%>");
+        create_button("<%=tmp_id%>","<%=tmp_name%>");
       <%
         }
       %>
+      create_table();
     }
-  </script>
-  <script>
     function create_button(u_id, u_name) {
-      var board = document.getElementsByClassName("sideBar");
+      var board = document.getElementById("sideBar");
       var newButton = document.createElement("button");
       var text = document.createTextNode(u_name);
       newButton.setAttribute("id", u_id);
       newButton.setAttribute("value", u_id);//value안쓰는거같은데
       newButton.setAttribute("type", "button");
+      newButton.setAttribute("onclick","table_display('"+u_id+"')");
       newButton.appendChild(text);
-      board[0].append(newButton);
-      alert("버튼 생성 완료");
+      board.append(newButton);
+    }
+    function create_table() {
+      var board = document.getElementsByClassName("cols");
+      var newdiv;
+      var text;
+      <%
+      for(TimetableVO c:vo_list){
+        for(Class_list l : c.getList()){
+      %>
+          newdiv = document.createElement("div");
+          newdiv.setAttribute("class", "<%=c.getUid()%> col");
+          newdiv.setAttribute("style", "visibility : visible");
+          newdiv.setAttribute("id", "<%=c.getUid()%>");
+          text = document.createTextNode("<%=l.getUser_name()%>");
+          newdiv.appendChild(text);
+          board[<%=l.getWeek()%>].append(newdiv);
+      <%
+        }
+      }
+      %>
+    }
+    function table_display(u_id){
+      var tag = document.getElementsByClassName(u_id);
+      for(var i = 0;i<tag.length;i++){
+        if(tag[i].style.visibility == "visible"){
+          tag[i].style.visibility = "hidden";
+        }
+        else{
+          tag[i].style.visibility = "visible";
+        }
+      }
     }
   </script>
 </head>
@@ -83,11 +119,11 @@
 
 <!-- Main Content-->
 <div class="main_Content gx-4 gx-lg-5 justify-content-center">
-  <div class="sideBar">
-    <form action = "/Timetable" method="post">
-      <input type = "submit" value = "Test">
-    </form>
-    <input type="button" value ="createbutton" onClick="tobutton()">
+  <div id="sideBar" class = "sideBar">
+<%--    <form action = "/Timetable" method="post">--%>
+<%--      <input type = "submit" value = "Test">--%>
+<%--    </form>--%>
+<%--    <input type="button" value ="createbutton" onClick="tobutton()">--%>
   </div>
   <div class="timeTable_Contents">
     <table>
