@@ -34,7 +34,8 @@ public class TeamBuildServlet extends HttpServlet {
         if(!dao.chk_team(r_tid)){
             dao.buildTeam(r_tname,r_tid,s_uid);
             session.setAttribute("team",r_tid);
-            Cookie cookie=new Cookie("team_list",dao.teamlist());
+            Cookie cookie_tl=new Cookie("team_list",dao.teamlist(s_uid));
+            response.addCookie(cookie_tl);
             response.sendRedirect("Main.html");
         }else{
             PrintWriter out=response.getWriter();
