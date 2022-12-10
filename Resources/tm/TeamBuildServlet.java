@@ -37,6 +37,7 @@ public class TeamBuildServlet extends HttpServlet {
         if(!dao.chk_team(r_tid)){
             dao.buildTeam(r_tname,r_tid,s_uid);
             session.setAttribute("team",r_tid);
+            response.sendRedirect("Main.html");
         }else{
             PrintWriter out=response.getWriter();
             out.println("<script>alert('이미 존재하는 id입니다.');window.history.back();</script>");
