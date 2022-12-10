@@ -41,6 +41,7 @@ public class TeamSelectServlet extends HttpServlet {
 
         if(r_tid.equals(dao.selectTeam(s_uid,r_tid))){
             session.setAttribute("team",r_tid);
+            response.sendRedirect("Main.html");
         }else{
             PrintWriter out=response.getWriter();
             out.println("<script>alert('해당 팀에 가입되지 않았거나 팀이 존재하지 않습니다.');windows.history.back();</script>");

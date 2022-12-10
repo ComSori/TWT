@@ -47,6 +47,22 @@ public class TeamDAO {
         }
 
     }
+    public String teamlist(String u_id) {
+        String result="";
+        try {
+            connDB();
+            String query = "SELECT GROUP_CONCAT(t_id SEPARATOR ':') AS result FROM t_associate WHERE u_id='" + u_id + "'";
+            pstmt=con.prepareStatement(query);
+            ResultSet rs=pstmt.executeQuery();
+            while(rs.next()){
+                result=rs.getString("result");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
     public String selectTeam(String uid,String tid){
         String rs_tid="";
         try{

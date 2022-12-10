@@ -2,10 +2,7 @@ package Resources.tm;
 
 
 import javax.servlet.*;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -37,6 +34,8 @@ public class TeamBuildServlet extends HttpServlet {
         if(!dao.chk_team(r_tid)){
             dao.buildTeam(r_tname,r_tid,s_uid);
             session.setAttribute("team",r_tid);
+            Cookie cookie_tl=new Cookie("team_list",dao.teamlist(s_uid));
+            response.addCookie(cookie_tl);
             response.sendRedirect("Main.html");
         }else{
             PrintWriter out=response.getWriter();
