@@ -44,7 +44,7 @@ public class LoginDAO {
         String result="";
         try {
             connDB();
-            String query = "SELECT GROUP_CONCAT(t_id SEPARATOR ':') AS result FROM t_associate WHERE uid='" + Id + "'";
+            String query = "SELECT GROUP_CONCAT(t_id SEPARATOR ':') AS result FROM t_associate WHERE u_id='" + Id + "'";
             pstmt=con.prepareStatement(query);
             ResultSet rs=pstmt.executeQuery();
             while(rs.next()){
