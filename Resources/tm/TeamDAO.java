@@ -49,20 +49,23 @@ public class TeamDAO {
         }
 
     }
-    public TeamJoinVO selectTeam(String uid,String tid){
+    public String selectTeam(String uid,String tid){
+        String rs_tid="";
         try{
             connDB();
             String query="SELECT t_id from t_associate where u_id='"+uid+"' AND t_id='"+tid+"'";
             pstmt=con.prepareStatement(query);
             ResultSet rs=pstmt.executeQuery();
             while(rs.next()){
-                rs.getString("t_id");
+                rs_tid=rs.getString("t_id");
             }
             pstmt.close();
             con.close();
         }catch(Exception e){
             e.printStackTrace();
         }
+
+        return rs_tid;
     }
     private void connDB(){
         try {
