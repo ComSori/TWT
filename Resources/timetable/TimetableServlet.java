@@ -29,14 +29,14 @@ public class TimetableServlet extends HttpServlet {
         TimetableDAO  dao= new TimetableDAO(s_tid);//session teamid받은 dao객체
         TimetableVO_list tabVO_list = dao.Load_member();//같은 팀원 id 저장된 timetablevo arraylist 반환
 
-        ArrayList<String> u_id_list = new ArrayList<String>();
-        for(int i =0;i<tabVO_list.size();i++){
-            u_id_list.add(tabVO_list.get(i).getUid());
-            System.out.println(tabVO_list.get(i).getUid());
-        }
-        session.setAttribute("u_id_list",u_id_list);
+//        ArrayList<String> u_id_list = new ArrayList<String>();
+//        for(int i =0;i<tabVO_list.size();i++){
+//            u_id_list.add(tabVO_list.get(i).getUid());
+//            System.out.println(tabVO_list.get(i).getUid());
+//        }
+//        session.setAttribute("u_id_list",u_id_list);
         session.setAttribute("u_id_cnt",+tabVO_list.size());
-//        session.setAttribute("vo_list",tabVO_list);
+        session.setAttribute("vo_list",tabVO_list);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("TimeTable.html");
         requestDispatcher.forward(request, response);
     }
