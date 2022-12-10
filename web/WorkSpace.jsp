@@ -18,9 +18,19 @@
 
   <link href="resources/css/content_workSpace.css" rel="stylesheet" />
   <script type="text/javascript" src="resources/js/navScripts.js"></script>
+
   <script type="text/javascript">
     window.onload = function() {
+      let text=getCookie("text").split(":");
+      let x=getCookie("x").split(":");
+      let y=getCookie("y").split(":");
+      let c=getCookie("c").split(":");
 
+      if(text) {
+         for(let i = 0; i < text.length - 1; i++) {
+           create_memo_data(text[i], x[i], y[i], c[i]);
+         }
+      }
     }
 
     function clickSpace(event) {
@@ -48,7 +58,6 @@
     }
 
     function memo_cancel() {
-      console.log("cancel");
 
       var box = document.getElementById("memo_inputBox");
       box.style.display = "none";
@@ -56,14 +65,11 @@
     }
 
     function memo_submit() {
-      console.log("submit");
-      /******************  TODO - DB에 입력
+      /******************
        *  속성 가져오기   *
        *****************/
       document.getElementById("text").setAttribute("value", document.getElementById("memo_inputText").value);
       var text = document.getElementById("memo_inputText").value;
-      var posX = document.getElementById("memo_inputBox").style.left;
-      var posY = document.getElementById("memo_inputBox").style.top;
       let memoBox = document.memoBox;
       if(text != null) {
         memoBox.method="post"
@@ -83,17 +89,17 @@
         alert("텍스트를 입력해주세요");
         window.history.back();
       }
-
       event.stopPropagation();
-
     }
 
-    function create_memo_data(text, posX, posY) {
+    function create_memo_data(text, posX, posY, c) {
       /******************   TODO - 반복문으로 DB에서 값 불러와서 출력
        * 새로운 박스 생성  *
        ******************/
 
       var board = document.getElementById("memo_space");
+      var newForm = document.createElement("form");
+      newForm.setAttribute("id", c + "form");
       var newMemo = document.createElement("div");
       newMemo.setAttribute("id", "memo_inputBox_updated");
       newMemo.style.top = posY;
@@ -103,22 +109,29 @@
       var newMemo_cancel_button = document.createElement("button");
       newMemo_cancel_button.setAttribute("id", "cancel_button");
       newMemo_cancel_button.setAttribute("type", "button");
+      var newhiddeninfo1 = document.createElement("input");
+      newhiddeninfo1.setAttribute("type", "hidden");
+      newhiddeninfo1.setAttribute("name", "count");
+      newhiddeninfo1.setAttribute("value", c);
       newMemo_cancel_button.onclick = function(){
-        newMemo.remove();
+        let memoBox = document.getElementById(c + "form");
+        memoBox.method="post";
+        memoBox.action="/memoDelete";
+        memoBox.submit();
         event.stopPropagation();
       };
       newMemo_controlBox.append(newMemo_cancel_button);
-
       var newMemo_textBox = document.createElement("div");
       newMemo_textBox.setAttribute("id", "memo_inputText");
       newMemo_textBox.innerText += text;
 
-
+      newMemo.append(newhiddeninfo1);
       newMemo.append(newMemo_controlBox);
       newMemo.append(newMemo_textBox);
 
-      console.log(newMemo);
-      board.append(newMemo);
+      newForm.append(newMemo);
+      board.append(newForm);
+      event.stopPropagation();
     }
   </script>
 </head>
@@ -223,4 +236,5 @@
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
