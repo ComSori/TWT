@@ -31,7 +31,6 @@
         <url-pattern>/id_check</url-pattern>
     </servlet-mapping>
 
-
     <servlet>
         <servlet-name>signup</servlet-name>
         <servlet-class>Resources.signup.SignupServlet</servlet-class>
@@ -46,6 +45,26 @@
         <servlet-name>Timetable</servlet-name>
         <servlet-class>Resources.timetable.TimetableServlet</servlet-class>
     </servlet>
+
+    <servlet>
+        <servlet-name>teambuild</servlet-name>
+        <servlet-class>Resources.tm.TeamBuildServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>teambuild</servlet-name>
+        <url-pattern>/teambuild</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>teamjoin</servlet-name>
+        <servlet-class>Resources.tm.TeamJoinServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>teamjoin</servlet-name>
+        <url-pattern>/teamjoin</url-pattern>
+    </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>Timetable</servlet-name>
@@ -62,4 +81,6 @@
         <url-pattern>/button</url-pattern>
     </servlet-mapping>
 
+
+    </servlet-mapping>
 </web-app>
