@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class MemoAddServlet extends HttpServlet {
+public class MemoLoadServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
@@ -32,22 +32,14 @@ public class MemoAddServlet extends HttpServlet {
             out.println("<script>alert('팀을 선택하지 않았습니다.');location.href='Main.html';</script>");
         }
 */
-        String memo_text = request.getParameter("text");
-        String posX = request.getParameter("posX");
-        String posY = request.getParameter("posY");
-        out.println("<script>alert('"+ memo_text +"');</script>");
+        //out.println("<script>alert('"+ memo_text +"');</script>");
         s_tid = "twt"; // TTODO 지우기
+        MemoDAO memoDAO = new MemoDAO(s_tid);
+        MemoVO memoVO = memoDAO.findMemo();
+        String text = memoVO.getText();
+        String X = memoVO.getX();
+        String Y = memoVO.getY();
 
-        MemoDAO memoDAO = new MemoDAO(memo_text, s_tid, posX, posY);
-        memoDAO.insertMemo();
-        /*
-        out.println(memoDAO.qur);
-        out.println(memoDAO.team_id);
-        out.println(memoDAO.text);
-        out.println(memoDAO.posX); // 넘어옴
-        out.println(memoDAO.posY); // 넘어옴
-        */
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WorkSpace.jsp");
-        requestDispatcher.forward(request, response);
+
     }
 }
