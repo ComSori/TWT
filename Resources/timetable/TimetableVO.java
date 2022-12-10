@@ -6,7 +6,7 @@ public class TimetableVO {
     private String u_id;
     private String t_id;
 
-    private ArrayList<Class_list> list;
+//    private ArrayList<Class_list> list;
 
     public TimetableVO() {
     }
@@ -18,17 +18,17 @@ public class TimetableVO {
         this.t_id = id;
     }
 
-    public void setList(ArrayList<Class_list> list){
-        this.list = list;
-    }
+//    public void setList(ArrayList<Class_list> list){
+//        this.list = list;
+//    }
 
     public String getUid(){
-        return this.u_id;
+        return u_id;
     }
     public String getTid(){
-        return this.t_id;
+        return t_id;
     }
-    public ArrayList<Class_list> getList(){
-        return this.list;
-    }
+//    public ArrayList<Class_list> getList(){
+//        return this.list;
+//    }
 }
