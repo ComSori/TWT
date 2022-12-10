@@ -76,7 +76,6 @@ public class MemoDAO {
             connDB();
             String query_Insert="insert into memo_table values('" + text + "','" + team_id + "','" + posX + "','" + posY + "',default)";
             pstmt = con.prepareStatement(query_Insert);
-            System.out.println(query_Insert);
             pstmt.executeUpdate();
             pstmt.close();
             con.close();

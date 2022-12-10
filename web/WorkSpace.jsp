@@ -70,8 +70,6 @@
        *****************/
       document.getElementById("text").setAttribute("value", document.getElementById("memo_inputText").value);
       var text = document.getElementById("memo_inputText").value;
-      //var posX = document.getElementById("memo_inputBox").style.left;
-      //var posY = document.getElementById("memo_inputBox").style.top;
       let memoBox = document.memoBox;
       if(text != null) {
         memoBox.method="post"
@@ -91,9 +89,7 @@
         alert("텍스트를 입력해주세요");
         window.history.back();
       }
-
       event.stopPropagation();
-
     }
 
     function create_memo_data(text, posX, posY, c) {
