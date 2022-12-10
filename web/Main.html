@@ -33,6 +33,32 @@
                 document.getElementById("login_btn").style.display = "block";
                 document.getElementById("logout_btn").style.display = "none";
             }
+
+            let team_list = getCookie("team_list").split(':');
+            var team_id;
+            if(team_list) {
+                for(var i = 0; i < team_list.length; i++) {
+                    team_id = team_list[i].toString();
+                    var board = document.getElementById("team_select_contents");
+                    var newForm = document.createElement("form");
+                    var newSubmit = document.createElement("input");
+                    var newinput = document.createElement("input");
+                    newForm.setAttribute("action", "/teamselect");
+                    newForm.setAttribute("method", "post");
+
+                    newinput.setAttribute("type", "hidden");
+                    newinput.setAttribute("name", "team_id");
+                    newinput.setAttribute("value", team_id);
+
+                    newSubmit.setAttribute("type", "submit");
+                    newSubmit.setAttribute("value",team_id);
+                    newSubmit.setAttribute("class", "submit_btn");
+
+                    newForm.append(newinput);
+                    newForm.append(newSubmit);
+                    board.append(newForm);
+                }
+            }
         }
     </script>
 </head>
@@ -82,27 +108,7 @@
         <h1>팀 선택</h1><br>
         <div class="main_content_box" id="team_select_contents">
             <!-- 본인 팀 선택부분 만들예정 db or session으로 값 불러오기 -->
-            <button>
-                test
-            </button>
-            <button>
-                test2
-            </button>
-            <button>
-                test2
-            </button>
-            <button>
-                test2
-            </button>
-            <button>
-                test2
-            </button>
-            <button>
-                test2
-            </button>
-            <button>
-                test2
-            </button>
+
         </div>
 
     </div>

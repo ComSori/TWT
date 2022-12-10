@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class TeamSelectServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request, response);
+    }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -18,15 +21,17 @@ public class TeamSelectServlet extends HttpServlet {
         //session check
         HttpSession session = request.getSession(true);
         String s_uid=(String)session.getAttribute("id");
+        PrintWriter out=response.getWriter();
+        out.println("<script>alert('" + r_tid + "')</script>");
         if(s_uid.equals("")){
-            PrintWriter out=response.getWriter();
+            //PrintWriter out=response.getWriter();
             out.println("<script>alert('login이 필요합니다.'); location.href='login_page.html';</script>");
             destroy();
         }
 
         //null check
         if(r_tid.equals("")){
-            PrintWriter out=response.getWriter();
+            //PrintWriter out=response.getWriter();
             out.println("<script>alert('팀 id를 공란없이 입력해주세요');window.history.back();</script>");
             destroy();
         }
@@ -36,7 +41,7 @@ public class TeamSelectServlet extends HttpServlet {
         if(r_tid.equals(dao.selectTeam(s_uid,r_tid))){
             session.setAttribute("team",r_tid);
         }else{
-            PrintWriter out=response.getWriter();
+            //PrintWriter out=response.getWriter();
             out.println("<script>alert('해당 팀에 가입되지 않았거나 팀이 존재하지 않습니다.');windows.history.back();</script>");
             destroy();
         }
