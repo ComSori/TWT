@@ -34,7 +34,7 @@ public class TeamBuildServlet extends HttpServlet {
         //DB
         TeamDAO dao=new TeamDAO();
 
-        if(dao.chk_team(r_tid).equals("")){
+        if(!dao.chk_team(r_tid)){
             dao.buildTeam(r_tname,r_tid,s_uid);
             session.setAttribute("team",r_tid);
         }else{
