@@ -23,14 +23,15 @@
             // 이동 후 부드러운 스크롤 추가
             document.documentElement.style.setProperty('scroll-behavior', 'smooth');
 
-            // overriding navScripts
+            // overriding
             u_name = getCookie("name");
-            if(u_name){
+            if(u_name){ // 세션이 있을때 (로그인중일때)
                 document.getElementById("login_info").innerText += u_name + "님 환영합니다.";
-            }
-            else {
-                alert('로그인 후 이용해주세요');
-                location.href='login_page.html';
+                document.getElementById("login_btn").style.display = "none";
+                document.getElementById("logout_btn").style.display = "block";
+            } else { // 세션이 없을때 (로그아웃 상태일때)
+                document.getElementById("login_btn").style.display = "block";
+                document.getElementById("logout_btn").style.display = "none";
             }
         }
     </script>
@@ -59,19 +60,51 @@
             <a class="navbar-brand" href="WorkSpace.html">WorkSpace</a>
             <div class="collapse navbar-collapse" id="navbarResponsive"></div>
             <div id="login_info"></div>
-            <button class="navbar-brand" onclick="logout()">logout</button>
+            <button type="button" id="login_btn" class="navbar-brand" onclick="login()">login</button>
+            <button type="hidden" id="logout_btn" class="navbar-brand" onclick="logout()">logout</button>
         </div>
     </nav>
 
     <!-- Main Content-->
     <div class="main_Content">
-        <div>
+        <div class="main_content_box" id="team_direct_contents">
+            <a href="#createTeam_content" class="formLink" id="create_button">
+                <div>
+                    create team
+                </div>
+            </a>
+            <a href="#joinTeam_content" class="formLink" id="join_button">
+                <div>
+                    join team
+                </div>
+            </a>
+        </div>
+        <h1>팀 선택</h1><br>
+        <div class="main_content_box" id="team_select_contents">
             <!-- 본인 팀 선택부분 만들예정 db or session으로 값 불러오기 -->
+            <button>
+                test
+            </button>
+            <button>
+                test2
+            </button>
+            <button>
+                test2
+            </button>
+            <button>
+                test2
+            </button>
+            <button>
+                test2
+            </button>
+            <button>
+                test2
+            </button>
+            <button>
+                test2
+            </button>
         </div>
-        <div>
-            <a href="#makeTeam_content" class="formLink" id="make_button">make team</a>
-            <a href="#joinTeam_content" class="formLink" id="join_button">join team</a>
-        </div>
+
     </div>
     <!-- Footer-->
     <footer class="border-top">
@@ -111,7 +144,7 @@
     </footer>
 </div>
 
-<div id="makeTeam_content">
+<div id="createTeam_content">
     <div class="team_content">
         <h1 class="form_logo">팀 생 성</h1>
         <form class="form_container" action="#" method = "post">
@@ -128,13 +161,12 @@
         </div>
     </div>
 </div>
-
 <div id="joinTeam_content">
     <div class="team_content">
         <h1 class="form_logo">팀 가 입</h1>
         <form class="form_container" action="#" method = "post">
             <!-- TODO action 채우기 -->
-            <input type="text" placeholder="팀 Id 입력" id="" class="input_box" name="team_name">
+            <input type="text" placeholder="팀 Id 입력" id="join_tid" class="input_box" name="team_name">
             <input type="submit" class="input_box submit_button" value="제 출">
         </form>
         <div class="signup">
