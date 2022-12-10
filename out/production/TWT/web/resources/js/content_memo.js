@@ -38,11 +38,18 @@ function memo_submit() {
     var posX = document.getElementById("memo_inputBox").style.left;
     var posY = document.getElementById("memo_inputBox").style.top;
 
-    create_memo_data(text, posX, posY);
+    if(text != null) {
+        create_memo_data(text, posX, posY);
 
-    var box = document.getElementById("memo_inputBox");
-    box.style.display = "none";
-    document.getElementById("memo_inputText").value = ""; // text reset
+        var box = document.getElementById("memo_inputBox");
+        box.style.display = "none";
+        document.getElementById("memo_inputText").value = ""; // text reset
+    }
+    else {
+        alert("텍스트를 입력해주세요");
+        window.history.back();
+    }
+
     event.stopPropagation();
 
 }

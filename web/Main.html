@@ -23,7 +23,7 @@
             // 이동 후 부드러운 스크롤 추가
             document.documentElement.style.setProperty('scroll-behavior', 'smooth');
 
-            // overriding navScripts
+            // overriding
             u_name = getCookie("name");
             if(u_name){ // 세션이 있을때 (로그인중일때)
                 document.getElementById("login_info").innerText += u_name + "님 환영합니다.";
@@ -69,10 +69,14 @@
     <div class="main_Content">
         <div class="main_content_box" id="team_direct_contents">
             <a href="#createTeam_content" class="formLink" id="create_button">
+                <div>
                     create team
+                </div>
             </a>
             <a href="#joinTeam_content" class="formLink" id="join_button">
-                join team
+                <div>
+                    join team
+                </div>
             </a>
         </div>
         <h1>팀 선택</h1><br>
@@ -157,7 +161,6 @@
         </div>
     </div>
 </div>
-
 <div id="joinTeam_content">
     <div class="team_content">
         <h1 class="form_logo">팀 가 입</h1>
@@ -168,7 +171,6 @@
         </form>
         <div class="signup">
             <a href="#main_page_container">
-                <!-- TODO action 채우기 -->
                 팀 생성 취소
             </a>
         </div>
