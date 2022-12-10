@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class MemoLoadServlet {
+public class MemoLoadServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
@@ -33,13 +33,15 @@ public class MemoLoadServlet {
         }
 */
         //out.println("<script>alert('"+ memo_text +"');</script>");
-        s_tid = "twt"; // TTODO 지우기
         MemoDAO memoDAO = new MemoDAO(s_tid);
         MemoVO memoVO = memoDAO.findMemo();
-        String text = memoVO.getText();
-        String X = memoVO.getX();
-        String Y = memoVO.getY();
-
-
+        request.setAttribute("text", memoVO.getText());
+        request.setAttribute("x", memoVO.getX());
+        request.setAttribute("y", memoVO.getY());
+        //out.println("<script>alert('"+ memoVO.getText() +"');</script>");
+        //out.println("<script>alert('"+ memoVO.getX() +"');</script>");
+        //out.println("<script>alert('"+ memoVO.getY() +"');</script>");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WorkSpace.jsp");
+        requestDispatcher.forward(request, response);
     }
 }

@@ -20,7 +20,12 @@
   <script type="text/javascript" src="resources/js/navScripts.js"></script>
   <script type="text/javascript">
     window.onload = function() {
-
+      const text = <%=request.getAttribute("text")%>.toString().split(":");
+      const x = <%=request.getAttribute("x")%>.toString().split(":");
+      const y = <%=request.getAttribute("y")%>.toString().split(":");
+      for(let i = 0; i < text.length; i++) {
+        create_memo_data(text, x, y);
+      }
     }
 
     function clickSpace(event) {
@@ -223,4 +228,5 @@
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

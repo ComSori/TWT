@@ -101,4 +101,14 @@
         <url-pattern>/memoAdd</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>memoLoad</servlet-name>
+        <servlet-class>Resources.twt.MemoLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>memoLoad</servlet-name>
+        <url-pattern>/memoLoad</url-pattern>
+    </servlet-mapping>
+
 </web-app>

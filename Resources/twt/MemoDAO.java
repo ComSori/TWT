@@ -39,13 +39,13 @@ public class MemoDAO {
             String input_text="", x="", y="";
             while(rs.next()) {
                 if(!input_text.equals("")) {
+                    input_text += rs.getString("post_text");
+                    x += rs.getString("posX");
+                    y += rs.getString("posY");
                     input_text += ":";
                     x += ":";
                     y += ":";
                 }
-                input_text += rs.getString("post_text");
-                x += rs.getString("posX");
-                y += rs.getString("posY");
             }
 
             memoVO.setText(input_text);

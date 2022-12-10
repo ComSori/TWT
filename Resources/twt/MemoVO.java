@@ -20,7 +20,7 @@ public class MemoVO {
     }
 
     public String getY(){return y;}
-    public void setY(String name){
+    public void setY(String y){
         this.y=y;
     }
 }
