@@ -59,9 +59,14 @@
       for(TimetableVO c:vo_list){
         for(Class_list l : c.getList()){
       %>
+          var divsize = document.querySelectorAll('.grid');
           newdiv = document.createElement("div");
           newdiv.setAttribute("class", "<%=c.getUid()%> col");
-          newdiv.setAttribute("style", "visibility : visible");
+          // newdiv.setAttribute("width",divsize[0].offsetWidth+"px");
+          // newdiv.setAttribute("height",divsize[0].offsetHeight+"px");
+          // newdiv.setAttribute("style", "width : "+divsize[0].offsetWidth+"px");
+          // newdiv.setAttribute("style", "height : "+divsize[0].offsetHeight+"px");
+          newdiv.setAttribute("style", "width : "+divsize[0].offsetWidth+"px;"+" height : "+divsize[0].offsetHeight+"px;"+" visibility : visible;");
           newdiv.setAttribute("id", "<%=c.getUid()%>");
           text = document.createTextNode("<%=l.getUser_name()%>");
           newdiv.appendChild(text);
@@ -153,18 +158,30 @@
           </div>
           <div class = "grids">
             <div class = "day">월</div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
+            <div class = "grid 0"></div>
+            <div class = "grid 1"></div>
+            <div class = "grid 2"></div>
+            <div class = "grid 3"></div>
+            <div class = "grid 4"></div>
+            <div class = "grid 5"></div>
+            <div class = "grid 6"></div>
+            <div class = "grid 7"></div>
+            <div class = "grid 8"></div>
+            <div class = "grid 9"></div>
+            <div class = "grid 10"></div>
+            <div class = "grid 11"></div>
+            <div class = "grid 12"></div>
+            <div class = "grid 13"></div>
+            <div class = "grid 14"></div>
+            <div class = "grid 15"></div>
+            <div class = "grid 16"></div>
+            <div class = "grid 17"></div>
+            <div class = "grid 18"></div>
+            <div class = "grid 19"></div>
+            <div class = "grid 20"></div>
+            <div class = "grid 21"></div>
+            <div class = "grid 22"></div>
+            <div class = "grid 23"></div>
           </div>
         </td>
         <td>
@@ -173,18 +190,30 @@
           </div>
           <div class = "grids">
             <div class = "day">화</div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
+            <div class = "grid 0"></div>
+            <div class = "grid 1"></div>
+            <div class = "grid 2"></div>
+            <div class = "grid 3"></div>
+            <div class = "grid 4"></div>
+            <div class = "grid 5"></div>
+            <div class = "grid 6"></div>
+            <div class = "grid 7"></div>
+            <div class = "grid 8"></div>
+            <div class = "grid 9"></div>
+            <div class = "grid 10"></div>
+            <div class = "grid 11"></div>
+            <div class = "grid 12"></div>
+            <div class = "grid 13"></div>
+            <div class = "grid 14"></div>
+            <div class = "grid 15"></div>
+            <div class = "grid 16"></div>
+            <div class = "grid 17"></div>
+            <div class = "grid 18"></div>
+            <div class = "grid 19"></div>
+            <div class = "grid 20"></div>
+            <div class = "grid 21"></div>
+            <div class = "grid 22"></div>
+            <div class = "grid 23"></div>
           </div>
         </td>
         <td>
@@ -193,18 +222,30 @@
           </div>
           <div class = "grids">
             <div class = "day">수</div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
+            <div class = "grid 0"></div>
+            <div class = "grid 1"></div>
+            <div class = "grid 2"></div>
+            <div class = "grid 3"></div>
+            <div class = "grid 4"></div>
+            <div class = "grid 5"></div>
+            <div class = "grid 6"></div>
+            <div class = "grid 7"></div>
+            <div class = "grid 8"></div>
+            <div class = "grid 9"></div>
+            <div class = "grid 10"></div>
+            <div class = "grid 11"></div>
+            <div class = "grid 12"></div>
+            <div class = "grid 13"></div>
+            <div class = "grid 14"></div>
+            <div class = "grid 15"></div>
+            <div class = "grid 16"></div>
+            <div class = "grid 17"></div>
+            <div class = "grid 18"></div>
+            <div class = "grid 19"></div>
+            <div class = "grid 20"></div>
+            <div class = "grid 21"></div>
+            <div class = "grid 22"></div>
+            <div class = "grid 23"></div>
           </div>
         </td>
         <td>
@@ -213,18 +254,30 @@
           </div>
           <div class = "grids">
             <div class = "day">목</div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
+            <div class = "grid 0"></div>
+            <div class = "grid 1"></div>
+            <div class = "grid 2"></div>
+            <div class = "grid 3"></div>
+            <div class = "grid 4"></div>
+            <div class = "grid 5"></div>
+            <div class = "grid 6"></div>
+            <div class = "grid 7"></div>
+            <div class = "grid 8"></div>
+            <div class = "grid 9"></div>
+            <div class = "grid 10"></div>
+            <div class = "grid 11"></div>
+            <div class = "grid 12"></div>
+            <div class = "grid 13"></div>
+            <div class = "grid 14"></div>
+            <div class = "grid 15"></div>
+            <div class = "grid 16"></div>
+            <div class = "grid 17"></div>
+            <div class = "grid 18"></div>
+            <div class = "grid 19"></div>
+            <div class = "grid 20"></div>
+            <div class = "grid 21"></div>
+            <div class = "grid 22"></div>
+            <div class = "grid 23"></div>
           </div>
         </td>
         <td>
@@ -233,18 +286,30 @@
           </div>
           <div class = "grids">
             <div class = "day">금</div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
+            <div class = "grid 0"></div>
+            <div class = "grid 1"></div>
+            <div class = "grid 2"></div>
+            <div class = "grid 3"></div>
+            <div class = "grid 4"></div>
+            <div class = "grid 5"></div>
+            <div class = "grid 6"></div>
+            <div class = "grid 7"></div>
+            <div class = "grid 8"></div>
+            <div class = "grid 9"></div>
+            <div class = "grid 10"></div>
+            <div class = "grid 11"></div>
+            <div class = "grid 12"></div>
+            <div class = "grid 13"></div>
+            <div class = "grid 14"></div>
+            <div class = "grid 15"></div>
+            <div class = "grid 16"></div>
+            <div class = "grid 17"></div>
+            <div class = "grid 18"></div>
+            <div class = "grid 19"></div>
+            <div class = "grid 20"></div>
+            <div class = "grid 21"></div>
+            <div class = "grid 22"></div>
+            <div class = "grid 23"></div>
           </div>
         </td>
         <td>
@@ -253,18 +318,30 @@
           </div>
           <div class = "grids">
             <div class = "day">토</div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
+            <div class = "grid 0"></div>
+            <div class = "grid 1"></div>
+            <div class = "grid 2"></div>
+            <div class = "grid 3"></div>
+            <div class = "grid 4"></div>
+            <div class = "grid 5"></div>
+            <div class = "grid 6"></div>
+            <div class = "grid 7"></div>
+            <div class = "grid 8"></div>
+            <div class = "grid 9"></div>
+            <div class = "grid 10"></div>
+            <div class = "grid 11"></div>
+            <div class = "grid 12"></div>
+            <div class = "grid 13"></div>
+            <div class = "grid 14"></div>
+            <div class = "grid 15"></div>
+            <div class = "grid 16"></div>
+            <div class = "grid 17"></div>
+            <div class = "grid 18"></div>
+            <div class = "grid 19"></div>
+            <div class = "grid 20"></div>
+            <div class = "grid 21"></div>
+            <div class = "grid 22"></div>
+            <div class = "grid 23"></div>
           </div>
         </td>
         <td>
@@ -273,18 +350,30 @@
           </div>
           <div class = "grids">
             <div class = "day">일</div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
-            <div class = "grid"></div>
+            <div class = "grid 0"></div>
+            <div class = "grid 1"></div>
+            <div class = "grid 2"></div>
+            <div class = "grid 3"></div>
+            <div class = "grid 4"></div>
+            <div class = "grid 5"></div>
+            <div class = "grid 6"></div>
+            <div class = "grid 7"></div>
+            <div class = "grid 8"></div>
+            <div class = "grid 9"></div>
+            <div class = "grid 10"></div>
+            <div class = "grid 11"></div>
+            <div class = "grid 12"></div>
+            <div class = "grid 13"></div>
+            <div class = "grid 14"></div>
+            <div class = "grid 15"></div>
+            <div class = "grid 16"></div>
+            <div class = "grid 17"></div>
+            <div class = "grid 18"></div>
+            <div class = "grid 19"></div>
+            <div class = "grid 20"></div>
+            <div class = "grid 21"></div>
+            <div class = "grid 22"></div>
+            <div class = "grid 23"></div>
           </div>
         </td>
       </tr>
