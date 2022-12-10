@@ -17,6 +17,10 @@ public class MemoDAO {
     public String posY;
     public String qur;
 
+    public MemoDAO(String team_id) {
+        this.team_id = team_id;
+    }
+
     public MemoDAO(String text, String team_id, String posX, String posY) {
         this.text=text;
         this.team_id=team_id;
@@ -24,11 +28,61 @@ public class MemoDAO {
         this.posY=posY;
     }
 
+    public MemoVO findMemo() {
+        MemoVO memoVO = new MemoVO();
+        try {
+            connDB();
+
+            String query="select * from memo_table where team_id = '" + team_id + "'";
+            pstmt=con.prepareStatement(query);
+            ResultSet rs=pstmt.executeQuery();
+            String input_text="", x="", y="";
+            while(rs.next()) {
+                if(!input_text.equals("")) {
+                    input_text += ":";
+                    x += ":";
+                    y += ":";
+                }
+                input_text += rs.getString("post_text");
+                x += rs.getString("posX");
+                y += rs.getString("posY");
+            }
+
+            memoVO.setText(input_text);
+            memoVO.setX(x);
+            memoVO.setY(y);
+
+            rs.close();
+            pstmt.close();
+            con.close();
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        return memoVO;
+    }
+
     public void insertMemo() {
         try {
             connDB();
 
             String query_Insert="insert into memo_table values('" + text + "','" + team_id + "','" + posX + "','" + posY + "')";
+            qur = query_Insert.toString();
+            pstmt = con.prepareStatement(query_Insert);
+            pstmt.executeUpdate();
+            pstmt.close();
+            con.close();
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteMemo() {
+        try {
+            connDB();
+
+            String query_Insert="insert into memo_table values('" + text + "','" + team_id + "','" + posX + "','" + posY + "')";
+            qur = query_Insert.toString();
             pstmt = con.prepareStatement(query_Insert);
             pstmt.executeUpdate();
             pstmt.close();
