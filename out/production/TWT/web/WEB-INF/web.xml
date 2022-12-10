@@ -91,4 +91,34 @@
         <url-pattern>/teamselect</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>memoAdd</servlet-name>
+        <servlet-class>Resources.twt.MemoAddServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>memoAdd</servlet-name>
+        <url-pattern>/memoAdd</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>memoDelete</servlet-name>
+        <servlet-class>Resources.twt.MemoDeleteServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>memoDelete</servlet-name>
+        <url-pattern>/memoDelete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>memoLoad</servlet-name>
+        <servlet-class>Resources.twt.MemoLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>memoLoad</servlet-name>
+        <url-pattern>/memoLoad</url-pattern>
+    </servlet-mapping>
+
 </web-app>

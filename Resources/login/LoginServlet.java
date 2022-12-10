@@ -35,7 +35,6 @@ public class LoginServlet extends HttpServlet {
         } else if(db_pwd.equals(r_pwd)){
             HttpSession session=request.getSession();
             session.setAttribute("id",r_id);
-
             Cookie cookie = new Cookie("name", loginVO.getName());
             Cookie cookie_tl=new Cookie("team_list",dao.loginGetTeam());
             response.addCookie(cookie);

@@ -2,20 +2,16 @@ package Resources.twt;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class MemoAddServlet extends HttpServlet {
+public class MemoLoadServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         String r_tname=request.getParameter("team_name");
         String r_tid=request.getParameter("team_id");
@@ -33,12 +29,19 @@ public class MemoAddServlet extends HttpServlet {
             out.println("<script>alert('팀을 선택하지 않았습니다.');location.href='Main.html';</script>");
         }
 
-        String memo_text = request.getParameter("text");
-        String posX = request.getParameter("posX");
-        String posY = request.getParameter("posY");
-        MemoDAO memoDAO = new MemoDAO(memo_text, s_tid, posX, posY);
-        memoDAO.insertMemo();
+        //out.println("<script>alert('"+ memo_text +"');</script>");
+        MemoDAO memoDAO = new MemoDAO(s_tid);
+        MemoVO memoVO = memoDAO.findMemo();
+        Cookie cookie = new Cookie("text", MemoVO.getText());
+        response.addCookie(cookie);
+        cookie = new Cookie("x", MemoVO.getX());
+        response.addCookie(cookie);
+        cookie = new Cookie("y", MemoVO.getY());
+        response.addCookie(cookie);
+        cookie = new Cookie("c", MemoVO.getC());
+        response.addCookie(cookie);
 
-        response.sendRedirect("/memoLoad");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WorkSpace.jsp");
+        requestDispatcher.forward(request, response);
     }
 }

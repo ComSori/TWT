@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 public class MemoDeleteServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         String r_tname=request.getParameter("team_name");
         String r_tid=request.getParameter("team_id");
@@ -29,7 +30,9 @@ public class MemoDeleteServlet extends HttpServlet {
             out.println("<script>alert('팀을 선택하지 않았습니다.');location.href='Main.html';</script>");
         }
 
-
-
+        String memo_count = request.getParameter("count");
+        MemoDAO memoDAO = new MemoDAO();
+        memoDAO.deleteMemo(memo_count);
+        response.sendRedirect("/memoLoad");
     }
 }
