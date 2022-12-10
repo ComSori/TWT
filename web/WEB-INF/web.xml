@@ -102,6 +102,16 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>memoDelete</servlet-name>
+        <servlet-class>Resources.twt.MemoDeleteServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>memoDelete</servlet-name>
+        <url-pattern>/memoDelete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>memoLoad</servlet-name>
         <servlet-class>Resources.twt.MemoLoadServlet</servlet-class>
     </servlet>

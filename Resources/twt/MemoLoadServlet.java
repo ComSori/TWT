@@ -2,10 +2,7 @@ package Resources.twt;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -35,12 +32,16 @@ public class MemoLoadServlet extends HttpServlet {
         //out.println("<script>alert('"+ memo_text +"');</script>");
         MemoDAO memoDAO = new MemoDAO(s_tid);
         MemoVO memoVO = memoDAO.findMemo();
-        request.setAttribute("text", memoVO.getText());
-        request.setAttribute("x", memoVO.getX());
-        request.setAttribute("y", memoVO.getY());
+        Cookie cookie = new Cookie("text", MemoVO.getText());
+        response.addCookie(cookie);
+        cookie = new Cookie("x", MemoVO.getX());
+        response.addCookie(cookie);
+        cookie = new Cookie("y", MemoVO.getY());
+        response.addCookie(cookie);
+        cookie = new Cookie("c", MemoVO.getC());
+        response.addCookie(cookie);
+
         //out.println("<script>alert('"+ memoVO.getText() +"');</script>");
-        //out.println("<script>alert('"+ memoVO.getX() +"');</script>");
-        //out.println("<script>alert('"+ memoVO.getY() +"');</script>");
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("WorkSpace.jsp");
         requestDispatcher.forward(request, response);
     }

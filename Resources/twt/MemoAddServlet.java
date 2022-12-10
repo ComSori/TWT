@@ -15,6 +15,7 @@ public class MemoAddServlet extends HttpServlet {
         doPost(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         String r_tname=request.getParameter("team_name");
         String r_tid=request.getParameter("team_id");
@@ -35,9 +36,6 @@ public class MemoAddServlet extends HttpServlet {
         String memo_text = request.getParameter("text");
         String posX = request.getParameter("posX");
         String posY = request.getParameter("posY");
-        out.println("<script>alert('"+ memo_text +"');</script>");
-        s_tid = "twt"; // TTODO 지우기
-
         MemoDAO memoDAO = new MemoDAO(memo_text, s_tid, posX, posY);
         memoDAO.insertMemo();
         /*
@@ -47,7 +45,7 @@ public class MemoAddServlet extends HttpServlet {
         out.println(memoDAO.posX); // 넘어옴
         out.println(memoDAO.posY); // 넘어옴
         */
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WorkSpace.jsp");
-        requestDispatcher.forward(request, response);
+
+        response.sendRedirect("/memoLoad");
     }
 }
