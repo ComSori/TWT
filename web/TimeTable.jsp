@@ -22,7 +22,6 @@
   <link href="resources/css/navStyles.css" rel="stylesheet" />
   <link href="resources/css/content_timeTable.css" rel="stylesheet" />
   <script type="text/javascript" src="resources/js/navScripts.js"></script>
-  <script type="text/javascript" src="resources/js/timetable.js"></script>
   <script type = "text/javascript">
     <%
     String tmp_id = new String();
