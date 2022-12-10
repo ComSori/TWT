@@ -23,8 +23,12 @@ public class TeamDAO {
     public void buildTeam(String t_id,String t_name,String t_leader){
         try{
             connDB();
-            String query="INSERT INTO team_table VALUES('"+t_id+"','"+t_name+"','"+t_leader+")";
+            String query="INSERT INTO team_table VALUES('"+t_id+"','"+t_name+"','"+t_leader+"')";
+            String query2="INSERT INTO team_table VALUES('"+t_id+"','"+t_leader+"')";
             pstmt=con.prepareStatement(query);
+            pstmt.executeUpdate();
+
+            pstmt=con.prepareStatement(query2);
             pstmt.executeUpdate();
 
             pstmt.close();
