@@ -11,7 +11,7 @@ public class TimetableDAO {
 
     TimetableDAO(String id){
         this.Id = id;
-    }
+    }//teamid 입력받아서 팀원id 쭉 출력
 
     public TimetableVO_list Load_member() {
         TimetableVO_list vo_list = new TimetableVO_list();
@@ -24,27 +24,27 @@ public class TimetableDAO {
             while(rs.next()) {
                 TimetableVO vo=new TimetableVO();
                 String u_id="",t_id="";
-                ArrayList<Class_list> list = new ArrayList<Class_list>();
+//                ArrayList<Class_list> list = new ArrayList<Class_list>();
                 u_id = rs.getString("u_id");
                 t_id = rs.getString("t_id");
-                String query2="select * from time_table where uid_for='"+u_id+"'";
-                pstmt=con.prepareStatement(query);
-                ResultSet rs2=pstmt.executeQuery();
-                while(rs2.next()){
-                    String user_name="",start="",end="",lecture="",lec_code="";
-                    int week = 0;
-                    user_name = rs2.getString("user_name");
-                    week = rs2.getInt("week");
-                    start = rs2.getString("start");
-                    end = rs2.getString("end");
-                    lecture = rs2.getString("lecture");
-                    lec_code = rs2.getString("lec_code");
-                    Class_list tmp = new Class_list(user_name,week,start,end,lecture,lec_code);
-                    list.add(tmp);
-                }
+//                String query2="select * from time_table where uid_for='"+u_id+"'";
+//                pstmt=con.prepareStatement(query);
+//                ResultSet rs2=pstmt.executeQuery();
+//                while(rs2.next()){
+//                    String user_name="",start="",end="",lecture="",lec_code="";
+//                    int week = 0;
+//                    user_name = rs2.getString("user_name");
+//                    week = rs2.getInt("week");
+//                    start = rs2.getString("start");
+//                    end = rs2.getString("end");
+//                    lecture = rs2.getString("lecture");
+//                    lec_code = rs2.getString("lec_code");
+//                    Class_list tmp = new Class_list(user_name,week,start,end,lecture,lec_code);
+//                    list.add(tmp);
+//                }
                 vo.setUid(u_id);
                 vo.setTid(t_id);
-                vo.setList(list);
+//                vo.setList(list);
 
                 vo_list.add(vo);
             }

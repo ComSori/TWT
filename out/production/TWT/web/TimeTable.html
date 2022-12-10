@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,16 +17,23 @@
     <link href="resources/css/navStyles.css" rel="stylesheet" />
     <link href="resources/css/content_timeTable.css" rel="stylesheet" />
     <script type="text/javascript" src="resources/js/navScripts.js"></script>
+    <script type="text/javascript" src="resources/js/timetable.js"></script>
+    <script type = "text/javascript">
+        function tobutton(){
+            location.href = "button.jsp";
+        }
+    </script>
 <!--    <script type="text/javascript">-->
 <!--        window.onload = function() {-->
-<!--            // u_name = getCookie("name");-->
-<!--            // if(u_name){-->
-<!--                location.href='/Timetable';-->
-<!--            // }-->
-<!--            // else {-->
-<!--            //     alert('로그인 후 이용해주세요');-->
-<!--            //     location.href='login_page.html';-->
-<!--            // }-->
+<!--            u_name = getCookie("name");-->
+<!--            if(u_name){-->
+<!--                location.href="/Timetable";-->
+<!--                create_button();-->
+<!--            }-->
+<!--            else {-->
+<!--                alert('로그인 후 이용해주세요');-->
+<!--                location.href='login_page.html';-->
+<!--            }-->
 <!--        }-->
 <!--    </script>-->
 </head>
@@ -61,7 +69,9 @@
     <div id="sideBar">
         <form action = "/Timetable" method="post">
             <input type = "submit" value = "Test">
+<!--            <script>create_button();</script>-->
         </form>
+        <input type="button" value ="createbutton" onClick="tobutton()">
     </div>
     <div class="timeTable_Contents">
         <table>
