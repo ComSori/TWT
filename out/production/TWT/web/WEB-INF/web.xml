@@ -81,4 +81,14 @@
         <url-pattern>/button</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>teamSelect</servlet-name>
+        <servlet-class>Resources.tm.TeamSelectServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>teamSelect</servlet-name>
+        <url-pattern>/teamselect</url-pattern>
+    </servlet-mapping>
+
 </web-app>
