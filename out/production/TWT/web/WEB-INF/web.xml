@@ -62,4 +62,24 @@
         <url-pattern>/button</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>MemoAdd</servlet-name>
+        <servlet-class>Resources.twt.MemoAddServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>MemoAdd</servlet-name>
+        <url-pattern>/MemoAdd</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MemoDelete</servlet-name>
+        <servlet-class>Resources.twt.MemoDeleteServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>MemoDelete</servlet-name>
+        <url-pattern>/MemoDelete</url-pattern>
+    </servlet-mapping>
+
 </web-app>
