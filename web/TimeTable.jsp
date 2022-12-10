@@ -109,7 +109,7 @@
   <div class="container px-4 px-lg-5">
     <div class="navbar-brand nav-logo">TWT</div>
     <a class="navbar-brand" href="Main.html">Main</a>
-    <a class="navbar-brand this-page" href="TimeTable.html">TimeTable</a>
+    <a class="navbar-brand this-page" href="Timetable">TimeTable</a>
     <a class="navbar-brand" href="WorkSpace.html">WorkSpace</a>
     <div class="collapse navbar-collapse" id="navbarResponsive"></div>
     <div id="login_info"></div>
