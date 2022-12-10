@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class TeamBuildServlet extends HttpServlet {
-    //설계 계획 세션인증->팀 생성페이지->팀생성 DB 입력-> 생성된 팀 선택설정
+    // 세션인증->팀 생성페이지->팀생성 DB 입력-> 생성된 팀 선택설정
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         response.setContentType("text/html;charset=UTF-8");
         String r_tname=request.getParameter("team_name");
@@ -34,7 +34,7 @@ public class TeamBuildServlet extends HttpServlet {
         //DB
         TeamDAO dao=new TeamDAO();
 
-        if(dao.chk_team(r_tid).equals("")){
+        if(!dao.chk_team(r_tid)){
             dao.buildTeam(r_tname,r_tid,s_uid);
             session.setAttribute("team",r_tid);
         }else{

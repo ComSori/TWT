@@ -37,7 +37,9 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("id",r_id);
 
             Cookie cookie = new Cookie("name", loginVO.getName());
+            Cookie cookie_tl=new Cookie("team_list",dao.loginGetTeam());
             response.addCookie(cookie);
+            response.addCookie(cookie_tl);
             response.sendRedirect("Main.html");
         }else {
             PrintWriter out = response.getWriter();

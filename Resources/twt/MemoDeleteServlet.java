@@ -8,7 +8,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class MemoServlet extends HttpServlet {
+public class MemoDeleteServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         response.setContentType("text/html;charset=UTF-8");
@@ -28,5 +28,8 @@ public class MemoServlet extends HttpServlet {
             PrintWriter out=response.getWriter();
             out.println("<script>alert('팀을 선택하지 않았습니다.');location.href='Main.html';</script>");
         }
+
+
+
     }
 }
