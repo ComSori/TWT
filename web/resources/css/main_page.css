@@ -51,6 +51,7 @@ body {
 }
 
 #team_select_contents {
+    width:100%;
     height:100%;
     display:inline-block;
     border:5px solid black;
@@ -63,8 +64,9 @@ body {
 }
 #team_select_contents > form {
     display:inline;
-    max-width:160px;
+    width:50%;
     float:left;
+    margin-bottom:20px;
 }
 
 #team_select_contents::-webkit-scrollbar {
