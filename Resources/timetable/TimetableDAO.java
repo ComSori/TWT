@@ -1,5 +1,7 @@
 package Resources.timetable;
 import Resources.timetable.TimetableVO;
+
+import javax.servlet.http.Cookie;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
@@ -8,10 +10,26 @@ public class TimetableDAO {
     private Connection con;
     private PreparedStatement pstmt;
     private String Id;
+    private String name;
+    private String week;
+    private String start;
+    private String end;
+    private String lecture;
+    private String lec_code;
 
     TimetableDAO(String id){
         this.Id = id;
     }//teamid 입력받아서 팀원id 쭉 출력
+
+    TimetableDAO(String name, String week, String start, String end, String lecture, String lec_code, String id) {
+        this.name = name;
+        this.week = week;
+        this.start = start;
+        this.end = end;
+        this.lecture = lecture;
+        this.lec_code = lec_code;
+        this.Id = id;
+    }
 
     public TimetableVO_list Load_member() {
         TimetableVO_list vo_list = new TimetableVO_list();
@@ -64,6 +82,19 @@ public class TimetableDAO {
             e.printStackTrace();
         }
         return vo_list;
+    }
+
+    public void Insert_table() {
+        try {
+            connDB();
+            String query_Insert="insert into time_table values('" + Id + "','" + week + "','" + start + "','" + end + "','" + lecture + "','" + lec_code + "','" + Id +"')";
+            pstmt = con.prepareStatement(query_Insert);
+            pstmt.executeUpdate();
+            pstmt.close();
+            con.close();
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void connDB() {

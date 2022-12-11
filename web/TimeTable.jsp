@@ -139,6 +139,9 @@
 <!-- Main Content-->
 <div class="main_Content gx-4 gx-lg-5 justify-content-center">
   <div id="sideBar" class = "sideBar">
+    <button onclick="location.href='Insert_timetable.html'">
+      테이블 추가
+    </button>
   </div>
   <div class="timeTable_Contents">
     <table>
