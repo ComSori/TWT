@@ -53,7 +53,7 @@
 
     <servlet>
         <servlet-name>InsertTable</servlet-name>
-        <servlet-class>Resources.timetable.InsertTable</servlet-class>
+        <servlet-class>Resources.timetable.InsertTableServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

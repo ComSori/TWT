@@ -32,6 +32,15 @@
     }
     %>
     window.onload = function() {
+      u_name = getCookie("name");
+      if(u_name){ // 세션이 있을때 (로그인중일때)
+        document.getElementById("login_info").innerText += u_name + "님 환영합니다.";
+        document.getElementById("login_btn").style.display = "none";
+        document.getElementById("logout_btn").style.display = "block";
+      } else { // 세션이 없을때 (로그아웃 상태일때)
+        document.getElementById("login_btn").style.display = "block";
+        document.getElementById("logout_btn").style.display = "none";
+      }
       <%
         TimetableVO_list vo_list = (TimetableVO_list) request.getAttribute("vo_list");
         for(TimetableVO c:vo_list){
@@ -130,6 +139,9 @@
 <!-- Main Content-->
 <div class="main_Content gx-4 gx-lg-5 justify-content-center">
   <div id="sideBar" class = "sideBar">
+    <button onclick="location.href='Insert_timetable.html'">
+      테이블 추가
+    </button>
   </div>
   <div class="timeTable_Contents">
     <table>
@@ -422,7 +434,7 @@
             </a>
           </li>
         </ul>
-        <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2022</div>
+        <div class="small text-center text-muted fst-italic">Copyright &copy; TWT 2022</div>
       </div>
     </div>
   </div>
