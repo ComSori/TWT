@@ -35,10 +35,12 @@
       let y=getCookie("y").split(":");
       let c=getCookie("c").split(":");
 
-      if(text) {
+      if(text > 1) {
          for(let i = 0; i < text.length - 1; i++) {
            create_memo_data(text[i], x[i], y[i], c[i]);
          }
+      } else {
+        alert("아무 곳이나 클릭해 글을 작성하세요.");
       }
     }
 
@@ -102,7 +104,7 @@
     }
 
     function create_memo_data(text, posX, posY, c) {
-      /******************   TODO - 반복문으로 DB에서 값 불러와서 출력
+      /******************
        * 새로운 박스 생성  *
        ******************/
 
