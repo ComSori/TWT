@@ -23,7 +23,6 @@ public class TeamSelectServlet extends HttpServlet {
         //session check
         HttpSession session = request.getSession(true);
         String s_uid=(String)session.getAttribute("id");
-        out.println("<script>alert('" + r_tid + "')</script>");
         if(s_uid.equals("")){
             //PrintWriter out=response.getWriter();
             out.println("<script>alert('login이 필요합니다.'); location.href='login_page.html';</script>");
