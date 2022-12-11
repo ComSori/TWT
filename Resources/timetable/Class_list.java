@@ -21,6 +21,11 @@ public class Class_list {
         this.lecture = lecture;
         this.lec_code = lec_code;
     }
+
+    public Class_list() {
+
+    }
+
     public void setUser_name(String name){
         this.user_name = name;
     }

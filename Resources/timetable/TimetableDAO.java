@@ -30,7 +30,6 @@ public class TimetableDAO {
                 String query2="select * from time_table where uid_for='"+u_id+"'";
                 pstmt=con.prepareStatement(query2);
                 ResultSet rs2=pstmt.executeQuery();
-//                u_name = rs2.getString("user_name");
                 String user_name="",start="",end="",lecture="",lec_code="";
                 int week = 0;
                 while(rs2.next()){
@@ -46,9 +45,16 @@ public class TimetableDAO {
                 vo.setUid(u_id);
                 vo.setTid(t_id);
                 vo.setList(list);
-                vo.setU_name(user_name);
+
+                query2="select u_name from user_table where u_id='"+u_id+"'";
+                pstmt=con.prepareStatement(query2);
+                rs2=pstmt.executeQuery();
+                rs2.next();
+                u_name = rs2.getString("u_name");
+                vo.setU_name(u_name);
 
                 vo_list.add(vo);
+                rs2.close();
             }
             rs.close();
             pstmt.close();
