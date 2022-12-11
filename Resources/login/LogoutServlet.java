@@ -7,6 +7,9 @@ import java.io.PrintWriter;
 
 public class LogoutServlet extends HttpServlet {
     @Override
+    protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
+        doPost(request,response);
+    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session=request.getSession();
@@ -17,9 +20,14 @@ public class LogoutServlet extends HttpServlet {
             out.println("<script>alert('login이 필요합니다.'); location.href='login_page.html';</script>");
         }
 
-        Cookie cookie=new Cookie("id","");
-        cookie.setMaxAge(0);
-        response.addCookie(cookie);
+        Cookie[] cookies = request.getCookies();
+        if(cookies != null){
+
+            for(int i=0; i < cookies.length; i++){
+                cookies[i].setMaxAge(0);
+                response.addCookie(cookies[i]);
+            }
+        }
         session.invalidate();
         response.sendRedirect("Main.html");
     }

@@ -22,11 +22,14 @@ public class MemoLoadServlet extends HttpServlet {
         String s_tid=(String)session.getAttribute("team");
         PrintWriter out=response.getWriter();
 
-        if (s_uid.equals("")) {
-            out.println("<script>alert('팀 id를 공란없이 입력해주세요');window.history.back();</script>");
+        if (s_uid==null) {
+            out.println("<script>alert('로그인후 이용가능합니다.');location.href='Main.html';</script>");
+            out.flush();
             destroy();
-        }else if(s_tid.equals("")){
+        }else if(s_tid==null){
             out.println("<script>alert('팀을 선택하지 않았습니다.');location.href='Main.html';</script>");
+            out.flush();
+            destroy();
         }
 
         //out.println("<script>alert('"+ memo_text +"');</script>");
@@ -43,5 +46,9 @@ public class MemoLoadServlet extends HttpServlet {
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("WorkSpace.jsp");
         requestDispatcher.forward(request, response);
+    }
+    public void destroy(){
+        System.out.println("destroy exe");
+        super.destroy();
     }
 }

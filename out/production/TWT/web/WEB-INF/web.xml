@@ -82,6 +82,16 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>Resources.login.LogoutServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>teamjoin</servlet-name>
         <servlet-class>Resources.tm.TeamJoinServlet</servlet-class>
     </servlet>
