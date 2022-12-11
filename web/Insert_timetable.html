@@ -8,21 +8,21 @@
 <body>
     <div class="insert_main">
         <h1 class="form_logo">시간표 입력</h1>
-        <form class="form_container" action="#" method = "post">
+        <form class="form_container" action="InsertTable" method = "post">
             <!-- user_name week start end lecture lec_code -->
             <!-- week는 int 나머지 varchar -->
             <input type="text" placeholder="과목 명" id="join_tid" class="input_box" name="team_name">
             <input type="hidden" name="user_name">
             <div class="contents">
                 요일
-                <select>
+                <select name = "week">
                     <option value="0">월요일</option>
-                    <option value="0">화요일</option>
-                    <option value="0">수요일</option>
-                    <option value="0">목요일</option>
-                    <option value="0">금요일</option>
-                    <option value="0">토요일</option>
-                    <option value="0">일요일</option>
+                    <option value="1">화요일</option>
+                    <option value="2">수요일</option>
+                    <option value="3">목요일</option>
+                    <option value="4">금요일</option>
+                    <option value="5">토요일</option>
+                    <option value="6">일요일</option>
                 </select>
             </div>
             <div class="contents">

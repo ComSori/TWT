@@ -52,6 +52,16 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>InsertTable</servlet-name>
+        <servlet-class>Resources.timetable.InsertTable</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>InsertTable</servlet-name>
+        <url-pattern>/InsertTable</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>teambuild</servlet-name>
         <servlet-class>Resources.tm.TeamBuildServlet</servlet-class>
     </servlet>
