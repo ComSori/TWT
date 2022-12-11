@@ -2,6 +2,7 @@
 <%@ page import="Resources.timetable.TimetableVO" %>
 <%@ page import="Resources.timetable.Class_list" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.lang.reflect.Array" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -26,7 +27,12 @@
     <%
     String tmp_id = new String();
     String tmp_name = new String();
-    ArrayList<String>[][] collapse = new ArrayList[7][24];
+    int[][] collapse = new int[7][24];
+    for(int i = 0;i<7;i++){
+      for(int j = 0;j<24;j++){
+        collapse[i][j]=0;
+      }
+    }
     %>
     window.onload = function() {
       // u_name = getCookie("name");
@@ -73,23 +79,20 @@
       for(TimetableVO c:vo_list){
         color.add("#"+String.format("%x",Math.round(Math.random()*0xffffff)));
         for(Class_list l : c.getList()){
-
+          for(int j =0;j<Integer.parseInt(l.getEnd())-Integer.parseInt(l.getStart())+1;j++){
+            collapse[l.getWeek()][Integer.parseInt(l.getStart()+j)]+=1;
+          }
       %>
-      var divstart = document.querySelector(".grids<%=l.getWeek()%> .grid_<%=l.getStart()%>");
-      var divend = document.querySelector(".grids<%=l.getWeek()%> .grid_<%=l.getEnd()%>");
-      newdiv = document.createElement("div");
-      newdiv.setAttribute("class", "<%=c.getUid()%> col");
-      newdiv.setAttribute("style", "line-height : "+(divend.getBoundingClientRect().bottom-divstart.getBoundingClientRect().top)+"px; background : <%=color.get(i)%>; top : "+divstart.offsetTop+"px; "+"left : "+divstart.offsetLeft+"px; "+"width : "+divstart.clientWidth+"px; "+"height : "+(divend.getBoundingClientRect().bottom-divstart.getBoundingClientRect().top)+"px; visibility : visible;");
-      newdiv.setAttribute("id", "<%=c.getUid()%>");
-      newdiv.setAttribute("onmouseover","showdetails()");
-<%--      <%--%>
-<%--      for(int j =0;j<=Integer.parseInt(l.getEnd())-Integer.parseInt(l.getStart());j++){--%>
-<%--        collapse[l.getWeek()][Integer.parseInt(l.getStart())+j].add(l.getLecture());--%>
-<%--      }--%>
-<%--      %>--%>
-      text = document.createTextNode("<%=c.getU_name()%>");
-      newdiv.appendChild(text);
-      board[<%=l.getWeek()%>].append(newdiv);
+          var divstart = document.querySelector(".grids<%=l.getWeek()%> .grid_<%=l.getStart()%>");
+          var divend = document.querySelector(".grids<%=l.getWeek()%> .grid_<%=l.getEnd()%>");
+          newdiv = document.createElement("div");
+          newdiv.setAttribute("class", "<%=c.getUid()%> col");
+          newdiv.setAttribute("style", "line-height : "+(divend.getBoundingClientRect().bottom-divstart.getBoundingClientRect().top)+"px; background : <%=color.get(i)%>; top : "+divstart.offsetTop+"px; "+"left : "+divstart.offsetLeft+"px; "+"width : "+divstart.clientWidth+"px; "+"height : "+(divend.getBoundingClientRect().bottom-divstart.getBoundingClientRect().top)+"px; visibility : visible;");
+          newdiv.setAttribute("id", "<%=c.getUid()%>");
+          newdiv.setAttribute("onmouseover","showdetails()");
+          text = document.createTextNode("<%=c.getU_name()%>");
+          newdiv.appendChild(text);
+          board[<%=l.getWeek()%>].append(newdiv);
       <%
         }
         i++;
