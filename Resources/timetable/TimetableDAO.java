@@ -97,6 +97,19 @@ public class TimetableDAO {
         }
     }
 
+    public void Delete_table() {
+        try {
+            connDB();
+            String query_Delete="delete from time_table where uid_for='" + Id + "'";
+            pstmt = con.prepareStatement(query_Delete);
+            pstmt.executeUpdate();
+            pstmt.close();
+            con.close();
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void connDB() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
