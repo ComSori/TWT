@@ -1,14 +1,16 @@
+
+
 .main_Content #sideBar{
     width: 20%;
     height: 100%;
-    background:black;
     float:left;
+    background-color: rgba(252, 171, 171, 0.34);
 }
 
 .main_Content .timeTable_Contents {
     width:80%;
     height:100%;
-    background:white;
+    background-color: rgba(252, 171, 171, 0.34);
     float:left;
     text-align : center;
 }
@@ -32,6 +34,8 @@ table {
 .day{
     border : 1px solid;
     height : 4%;
+    background-color: #2f2f2f;
+    color:white;
 }
 
 .hours{
@@ -45,12 +49,39 @@ table {
 .hour {
     border : 1px solid;
     height:4%;
+    color:white;
+    background-color: #2f2f2f;
 }
+
+#addTableBtn{
+    background-color: #23e886 !important;
+    color: black;
+}
+
+#addTableBtn:hover {
+    background-color: #11be50 !important;
+    color:white;
+}
+
 #sideBar button {
     display: block;
-    width : 100%;
-    border-radius: 15px;
+    width : 80%;
+    height: 60px;
+    border-radius: 30px;
+    border:3px dotted black;
+    font-size:25px;
+    margin: 5% 10% 5% 10%;
+    background-color: #f1d26a;
+    color: black;
+    transition:0.3s;
 }
+
+#sideBar button:hover {
+    background-color: #d0981c;
+    color:white;
+    transition:0.3s;
+}
+
 .col {
     background: blue;
     /*border: 1px solid;*/
