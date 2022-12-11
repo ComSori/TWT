@@ -94,23 +94,26 @@
     <!-- Main Content-->
     <div class="main_Content">
         <div class="main_content_box" id="team_direct_contents">
+            <br><br><br>
             <a href="#createTeam_content" class="formLink" id="create_button">
                 <div>
                     create team
                 </div>
             </a>
+            <br><br><br>
             <a href="#joinTeam_content" class="formLink" id="join_button">
                 <div>
                     join team
                 </div>
             </a>
         </div>
-        <h1>팀 선택</h1><br>
-        <div class="main_content_box" id="team_select_contents">
-            <!-- 본인 팀 선택부분 만들예정 db or session으로 값 불러오기 -->
+        <div class="main_content_box">
+            <h1>팀 선택</h1><br>
+            <div id="team_select_contents">
+                <!-- 본인 팀 선택부분 만들예정 db or session으로 값 불러오기 -->
 
+            </div>
         </div>
-
     </div>
     <!-- Footer-->
     <footer class="border-top">
@@ -143,7 +146,7 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2022</div>
+                    <div class="small text-center text-muted fst-italic">Copyright &copy; TWT 2022</div>
                 </div>
             </div>
         </div>
@@ -172,7 +175,7 @@
         <h1 class="form_logo">팀 가 입</h1>
         <form class="form_container" action="/teamjoin" method = "post">
             <!-- TODO action 채우기 -->
-            <input type="text" placeholder="팀 Id 입력" id="join_tid" class="input_box" name="team_name">
+            <input type="text" placeholder="팀 Id 입력" id="join_tid" class="input_box" name="join_tid">
             <input type="submit" class="input_box submit_button" value="제 출">
         </form>
         <div class="signup">

@@ -23,8 +23,12 @@ public class TeamDAO {
     public void buildTeam(String t_id,String t_name,String t_leader){
         try{
             connDB();
-            String query="INSERT INTO team_table VALUES('"+t_id+"','"+t_name+"','"+t_leader+")";
+            String query="INSERT INTO team_table VALUES('"+t_id+"','"+t_leader+"','"+t_name+"')";
+            String query2="INSERT INTO t_associate VALUES('"+t_leader+"','"+t_id+"')";
             pstmt=con.prepareStatement(query);
+            pstmt.executeUpdate();
+
+            pstmt=con.prepareStatement(query2);
             pstmt.executeUpdate();
 
             pstmt.close();
@@ -33,10 +37,10 @@ public class TeamDAO {
             e.printStackTrace();
         }
     }
-    public void joinTeam(String t_id,String s_id){
+    public void joinTeam(String s_id,String t_id){
         try{
             connDB();
-            String query="INSERT INTO t_associate VALUES('"+s_id+"','"+t_id+")";
+            String query="INSERT INTO t_associate VALUES('"+s_id+"','"+t_id+"')";
             pstmt=con.prepareStatement(query);
             pstmt.executeUpdate();
 

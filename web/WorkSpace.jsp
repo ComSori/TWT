@@ -21,6 +21,15 @@
 
   <script type="text/javascript">
     window.onload = function() {
+      u_name = getCookie("name");
+      if(u_name){ // 세션이 있을때 (로그인중일때)
+        document.getElementById("login_info").innerText += u_name + "님 환영합니다.";
+        document.getElementById("login_btn").style.display = "none";
+        document.getElementById("logout_btn").style.display = "block";
+      } else { // 세션이 없을때 (로그아웃 상태일때)
+        document.getElementById("login_btn").style.display = "block";
+        document.getElementById("logout_btn").style.display = "none";
+      }
       let text=getCookie("text").split(":");
       let x=getCookie("x").split(":");
       let y=getCookie("y").split(":");
@@ -166,9 +175,6 @@
   <!-- Main Content-->
 
   <div class="main_Content gx-4 gx-lg-5 justify-content-center">
-    <div class="sideBar">
-
-    </div>
     <div class="board_Contents" id="board_Contents"> <!-- memo Contents -->
       <div id="memo_space" onclick="clickSpace(event)" method="POST" action="memo_submit">
         <form name="memoBox" id="memo_inputBox">
@@ -185,54 +191,8 @@
         </form>
       </div>
     </div>
-    <div class="side_Contents">
-      <div class="login_info_menu">
-        <div id="login_info_logo">로그인 목록</div>
-        <div id="login_info_box">
-
-        </div>
-      </div>
-      <div class="chat_menu">
-
-      </div>
-    </div>
   </div>
-  <!-- Footer-->
-  <footer class="border-top">
-    <div class="container px-4 px-lg-5">
-      <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-md-10 col-lg-8 col-xl-7">
-          <ul class="list-inline text-center">
-            <li class="list-inline-item">
-              <a href="#!">
-                                      <span class="fa-stack fa-lg">
-                                          <i class="fas fa-circle fa-stack-2x"></i>
-                                          <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                                      </span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#!">
-                                      <span class="fa-stack fa-lg">
-                                          <i class="fas fa-circle fa-stack-2x"></i>
-                                          <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                                      </span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#!">
-                                      <span class="fa-stack fa-lg">
-                                          <i class="fas fa-circle fa-stack-2x"></i>
-                                          <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                                      </span>
-              </a>
-            </li>
-          </ul>
-          <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2022</div>
-        </div>
-      </div>
-    </div>
-  </footer>
+
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

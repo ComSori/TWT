@@ -142,6 +142,9 @@
 <!-- Main Content-->
 <div class="main_Content gx-4 gx-lg-5 justify-content-center">
   <div id="sideBar" class = "sideBar">
+    <button onclick="location.href='Insert_timetable.html'">
+      테이블 추가
+    </button>
   </div>
   <div class="timeTable_Contents">
     <table>
@@ -434,7 +437,7 @@
             </a>
           </li>
         </ul>
-        <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2022</div>
+        <div class="small text-center text-muted fst-italic">Copyright &copy; TWT 2022</div>
       </div>
     </div>
   </div>

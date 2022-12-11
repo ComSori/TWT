@@ -29,11 +29,11 @@ public class TeamJoinServlet extends HttpServlet {
         //DB
         TeamDAO dao=new TeamDAO();
 
-        if(dao.chk_team(r_tid).equals("")){
+        if(!dao.chk_team(r_tid)){
             PrintWriter out=response.getWriter();
             out.println("<script>alert('존재하지 않는 팀입니다.');window.history.back();</script>");
         }else{
-            dao.joinTeam(r_tid,s_uid);
+            dao.joinTeam(s_uid,r_tid);
             session.setAttribute("team",r_tid);
 
             Cookie cookie_tl=new Cookie("team_list",dao.teamlist(s_uid));
