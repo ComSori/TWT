@@ -26,21 +26,23 @@
     <%
     String tmp_id = new String();
     String tmp_name = new String();
-    ArrayList<Class_list>[] collapse = new ArrayList[24];
-    for (int i = 0;i < 24;i++){
-      collapse[i] = new ArrayList<Class_list>();
-    }
+//    ArrayList<String>[] collapse = new ArrayList[7];
+//    for (int i = 0;i < 24;i++){
+//      collapse[i] = new ArrayList<String>();
+//    }
     %>
     window.onload = function() {
-      u_name = getCookie("name");
-      if(u_name){ // 세션이 있을때 (로그인중일때)
-        document.getElementById("login_info").innerText += u_name + "님 환영합니다.";
-        document.getElementById("login_btn").style.display = "none";
-        document.getElementById("logout_btn").style.display = "block";
-      } else { // 세션이 없을때 (로그아웃 상태일때)
-        document.getElementById("login_btn").style.display = "block";
-        document.getElementById("logout_btn").style.display = "none";
-      }
+      // u_name = getCookie("name");
+      // if(u_name){ // 세션이 있을때 (로그인중일때)
+      //   document.getElementById("login_info").innerText += u_name + "님 환영합니다.";
+      //   document.getElementById("login_btn").style.display = "none";
+      //   document.getElementById("logout_btn").style.display = "block";
+      //   alert("test");
+      // } else { // 세션이 없을때 (로그아웃 상태일때)
+      //   document.getElementById("login_btn").style.display = "block";
+      //   document.getElementById("logout_btn").style.display = "none";
+      //   alert("test2");
+      // }
       <%
         TimetableVO_list vo_list = (TimetableVO_list) request.getAttribute("vo_list");
         for(TimetableVO c:vo_list){
@@ -83,7 +85,12 @@
       newdiv.setAttribute("class", "<%=c.getUid()%> col");
       newdiv.setAttribute("style", "line-height : "+(divend.getBoundingClientRect().bottom-divstart.getBoundingClientRect().top)+"px; background : <%=color.get(i)%>; top : "+divstart.offsetTop+"px; "+"left : "+divstart.offsetLeft+"px; "+"width : "+divstart.clientWidth+"px; "+"height : "+(divend.getBoundingClientRect().bottom-divstart.getBoundingClientRect().top)+"px; visibility : visible;");
       newdiv.setAttribute("id", "<%=c.getUid()%>");
-      newdiv.setAttribute("onmouseover","alert('<%=c.getUid()%>')")
+      <%--newdiv.setAttribute("onmouseover","alert('<%=c.getUid()%>')")--%>
+<%--      <%--%>
+<%--      for(int j =0;j<=Integer.parseInt(l.getEnd())-Integer.parseInt(l.getStart());j++){--%>
+<%--        collapse[l.getWeek()].get(Integer.parseInt(l.getStart())).add(l.getLecture());--%>
+<%--      }--%>
+<%--      %>--%>
       text = document.createTextNode("<%=c.getU_name()%>");
       newdiv.appendChild(text);
       board[<%=l.getWeek()%>].append(newdiv);
