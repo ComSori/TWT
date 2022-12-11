@@ -4,6 +4,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class TimetableServlet extends HttpServlet {
@@ -17,12 +18,12 @@ public class TimetableServlet extends HttpServlet {
         response.setContentType("text/html;charset=utf-8");
         //request id, pwd
         HttpSession session = request.getSession(true);
-        String s_tid=(String)session.getAttribute("team");
 //        String s_tid = new String("twt");
-//        if(s_tid.equals("")){
-//            PrintWriter out=response.getWriter();
-//            out.println("<script>alert('login이 필요합니다.'); location.href='login_page.html';</script>");
-//        }
+        if(session.getAttribute("team")==null){
+            PrintWriter out=response.getWriter();
+            out.println("<script>alert('팀선택이 필요합니다.'); location.href='Main.html';</script>");
+        }
+        String s_tid=(String)session.getAttribute("team");
 
         TimetableDAO  dao= new TimetableDAO(s_tid);//session teamid받은 dao객체
         TimetableVO_list tabVO_list = dao.Load_member();//같은 팀원 id 저장된 timetablevo arraylist 반환

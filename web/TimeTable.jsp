@@ -26,10 +26,7 @@
     <%
     String tmp_id = new String();
     String tmp_name = new String();
-//    ArrayList<String>[] collapse = new ArrayList[7];
-//    for (int i = 0;i < 24;i++){
-//      collapse[i] = new ArrayList<String>();
-//    }
+    ArrayList<String>[][] collapse = new ArrayList[7][24];
     %>
     window.onload = function() {
       // u_name = getCookie("name");
@@ -70,7 +67,6 @@
       var board = document.getElementsByClassName("cols");
       var newdiv;
       var text;
-      // var colorCode  = "#" + Math.round(Math.random() * 0xffffff).toString(16);
       <%
       ArrayList<String> color = new ArrayList<String>();
       int i = 0;
@@ -85,12 +81,12 @@
       newdiv.setAttribute("class", "<%=c.getUid()%> col");
       newdiv.setAttribute("style", "line-height : "+(divend.getBoundingClientRect().bottom-divstart.getBoundingClientRect().top)+"px; background : <%=color.get(i)%>; top : "+divstart.offsetTop+"px; "+"left : "+divstart.offsetLeft+"px; "+"width : "+divstart.clientWidth+"px; "+"height : "+(divend.getBoundingClientRect().bottom-divstart.getBoundingClientRect().top)+"px; visibility : visible;");
       newdiv.setAttribute("id", "<%=c.getUid()%>");
-      <%--newdiv.setAttribute("onmouseover","alert('<%=c.getUid()%>')")--%>
-<%--      <%--%>
-<%--      for(int j =0;j<=Integer.parseInt(l.getEnd())-Integer.parseInt(l.getStart());j++){--%>
-<%--        collapse[l.getWeek()].get(Integer.parseInt(l.getStart())).add(l.getLecture());--%>
-<%--      }--%>
-<%--      %>--%>
+      newdiv.setAttribute("onmouseover","showdetails(<%=l.getWeek()%>,<%=l.getStart()%>)");
+      <%
+      for(int j =0;j<=Integer.parseInt(l.getEnd())-Integer.parseInt(l.getStart());j++){
+        collapse[l.getWeek()][Integer.parseInt(l.getStart())+j].add(l.getLecture());
+      }
+      %>
       text = document.createTextNode("<%=c.getU_name()%>");
       newdiv.appendChild(text);
       board[<%=l.getWeek()%>].append(newdiv);
@@ -111,9 +107,9 @@
         }
       }
     }
-    // function showdetails(){
-    //
-    // }
+    function showdetails(){
+
+    }
   </script>
 </head>
 <body>
