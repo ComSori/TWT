@@ -15,10 +15,14 @@ public class LogoutServlet extends HttpServlet {
         HttpSession session=request.getSession();
 
         String s_uid=(String)session.getAttribute("id");
-        if(s_uid.equals("")){
+        if(session.getAttribute("id")==null) {
             PrintWriter out=response.getWriter();
             out.println("<script>alert('login이 필요합니다.'); location.href='login_page.html';</script>");
         }
+//        if(s_uid.equals("")){
+//            PrintWriter out=response.getWriter();
+//            out.println("<script>alert('login이 필요합니다.'); location.href='login_page.html';</script>");
+//        }
 
         Cookie[] cookies = request.getCookies();
         if(cookies != null){
