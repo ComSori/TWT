@@ -79,9 +79,9 @@
       for(TimetableVO c:vo_list){
         color.add("#"+String.format("%x",Math.round(Math.random()*0xffffff)));
         for(Class_list l : c.getList()){
-          for(int j =0;j<Integer.parseInt(l.getEnd())-Integer.parseInt(l.getStart())+1;j++){
-            collapse[l.getWeek()][Integer.parseInt(l.getStart()+j)]+=1;
-          }
+        //  for(int j =0;j<Integer.parseInt(l.getEnd())-Integer.parseInt(l.getStart())+1;j++){
+         //   collapse[l.getWeek()][Integer.parseInt(l.getStart()+j)]+=1;
+         // }
       %>
           var divstart = document.querySelector(".grids<%=l.getWeek()%> .grid_<%=l.getStart()%>");
           var divend = document.querySelector(".grids<%=l.getWeek()%> .grid_<%=l.getEnd()%>");
@@ -145,8 +145,11 @@
 <!-- Main Content-->
 <div class="main_Content gx-4 gx-lg-5 justify-content-center">
   <div id="sideBar" class = "sideBar">
-    <button onclick="location.href='Insert_timetable.html'">
-      테이블 추가
+    <button onclick="location.href='Insert_timetable.html'" class="specialTableBtn">
+      시간표 추가
+    </button>
+    <button onclick="location.href='/deleteTable'" class="specialTableBtn">
+      시간표 삭제
     </button>
   </div>
   <div class="timeTable_Contents">

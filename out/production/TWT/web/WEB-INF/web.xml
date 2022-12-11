@@ -62,6 +62,16 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>DeleteTable</servlet-name>
+        <servlet-class>Resources.timetable.TimetableDeleteServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DeleteTable</servlet-name>
+        <url-pattern>/deleteTable</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>teambuild</servlet-name>
         <servlet-class>Resources.tm.TeamBuildServlet</servlet-class>
     </servlet>
@@ -100,6 +110,7 @@
         <servlet-name>teamSelect</servlet-name>
         <url-pattern>/teamselect</url-pattern>
     </servlet-mapping>
+
 
     <servlet>
         <servlet-name>memoAdd</servlet-name>
