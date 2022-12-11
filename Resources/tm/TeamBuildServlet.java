@@ -15,16 +15,18 @@ public class TeamBuildServlet extends HttpServlet {
         //session check
         HttpSession session = request.getSession(true);
         String s_uid=(String)session.getAttribute("id");
-        if(s_uid.equals("")){
+        if(s_uid==null){
             PrintWriter out=response.getWriter();
             out.println("<script>alert('login이 필요합니다.'); location.href='login_page.html';</script>");
+            out.flush();
             destroy();
         }
 
         //null check
-        if(r_tname.equals("")||r_tid.equals("")){
+        if(r_tname==null||r_tid==null){
             PrintWriter out =response.getWriter();
             out.println("<script>alert('id혹은이름을 공란없이 입력해주세요');window.history.back();</script>");
+            out.flush();
             destroy();
         }
 
