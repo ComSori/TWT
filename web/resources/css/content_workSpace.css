@@ -1,55 +1,11 @@
-.main_Content .sideBar{
-    width: 15%;
-    height: 100%;
-    background:red;
-    float:left;
-    z-index:20;
-}
+
 
 .main_Content .board_Contents {
-    width:65%;
+    width:100%;
     height:100%;
     background:green;
     float:left;
     z-index:0;
-}
-
-.main_Content .side_Contents {
-    width:20%;
-    height:100%;
-    background:blue;
-    float:right;
-    z-index:20;
-}
-
-.side_Contents .login_info_menu {
-    height:50%;
-    width:100%;
-    background:blue;
-    position:sticky;
-    top:100px;
-}
-
-.side_Contents #login_info_logo {
-    text-align:center;
-    background:white;
-    padding:10px;
-    margin-top:20px;
-}
-
-.side_Contents #login_info_box {
-    margin:0px;
-    padding:5px;
-    border:3px solid lightgray;
-    border-radius:20px;
-}
-
-.side_Contents .chat_menu {
-    height:50%;
-    width:100%;
-    /*
-    background:yellow;
-    */
 }
 
 /******************************************
@@ -64,8 +20,15 @@ button {
     height:100%;
     background-color:white;
     position:relative;
-    overflow-x:scroll;
+    overflow:scroll;
+    -ms-overflow-style: none; /* 스크롤바 안보이게 */
 }
+
+#memo_space::-webkit-scrollbar {
+    display:none; /* 크롬, 사파리 */
+}
+
+
 
 #memo_inputBox {
     display:none;
