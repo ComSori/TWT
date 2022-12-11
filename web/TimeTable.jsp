@@ -81,12 +81,12 @@
       newdiv.setAttribute("class", "<%=c.getUid()%> col");
       newdiv.setAttribute("style", "line-height : "+(divend.getBoundingClientRect().bottom-divstart.getBoundingClientRect().top)+"px; background : <%=color.get(i)%>; top : "+divstart.offsetTop+"px; "+"left : "+divstart.offsetLeft+"px; "+"width : "+divstart.clientWidth+"px; "+"height : "+(divend.getBoundingClientRect().bottom-divstart.getBoundingClientRect().top)+"px; visibility : visible;");
       newdiv.setAttribute("id", "<%=c.getUid()%>");
-      newdiv.setAttribute("onmouseover","showdetails(<%=l.getWeek()%>,<%=l.getStart()%>)");
-      <%
-      for(int j =0;j<=Integer.parseInt(l.getEnd())-Integer.parseInt(l.getStart());j++){
-        collapse[l.getWeek()][Integer.parseInt(l.getStart())+j].add(l.getLecture());
-      }
-      %>
+      newdiv.setAttribute("onmouseover","showdetails()");
+<%--      <%--%>
+<%--      for(int j =0;j<=Integer.parseInt(l.getEnd())-Integer.parseInt(l.getStart());j++){--%>
+<%--        collapse[l.getWeek()][Integer.parseInt(l.getStart())+j].add(l.getLecture());--%>
+<%--      }--%>
+<%--      %>--%>
       text = document.createTextNode("<%=c.getU_name()%>");
       newdiv.appendChild(text);
       board[<%=l.getWeek()%>].append(newdiv);
