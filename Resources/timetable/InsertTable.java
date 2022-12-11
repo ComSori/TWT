@@ -5,7 +5,6 @@ import javax.servlet.http.*;
 import java.io.IOException;
 
 public class InsertTable extends HttpServlet {
-    private static final long serialVersionUID = 1L;
 
     public InsertTable() {
     }
