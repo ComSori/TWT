@@ -35,7 +35,7 @@
       let y=getCookie("y").split(":");
       let c=getCookie("c").split(":");
 
-      if(text > 1) {
+      if(text.length > 1) {
          for(let i = 0; i < text.length - 1; i++) {
            create_memo_data(text[i], x[i], y[i], c[i]);
          }
