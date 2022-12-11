@@ -37,7 +37,7 @@
             let team_list = getCookie("team_list").split(':');
             var team_id;
             if(team_list) {
-                for(var i = 0; i < team_list.length; i++) {
+                for(var i = 1; i < team_list.length; i++) {
                     team_id = team_list[i].toString();
                     var board = document.getElementById("team_select_contents");
                     var newForm = document.createElement("form");
