@@ -19,9 +19,16 @@ public class TimetableServlet extends HttpServlet {
         //request id, pwd
         HttpSession session = request.getSession(true);
 //        String s_tid = new String("twt");
+        PrintWriter out=response.getWriter();
+        if(session.getAttribute("id")==null){
+            out.println("<script>alert('로그인이 필요합니다.'); location.href='Main.html';</script>");
+            out.flush();
+            destroy();
+        }
         if(session.getAttribute("team")==null){
-            PrintWriter out=response.getWriter();
             out.println("<script>alert('팀선택이 필요합니다.'); location.href='Main.html';</script>");
+            out.flush();
+            destroy();
         }
         String s_tid=(String)session.getAttribute("team");
 
