@@ -25,6 +25,7 @@ public class TeamBuildServlet extends HttpServlet {
             out.println("<script>alert('id혹은이름을 공란없이 입력해주세요');window.history.back();</script>");
             out.flush();
             destroy();
+            //test
         }else{
             TeamDAO dao=new TeamDAO();
             if(!dao.chk_team(r_tid)){
