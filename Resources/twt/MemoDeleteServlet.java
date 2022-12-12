@@ -28,11 +28,11 @@ public class MemoDeleteServlet extends HttpServlet {
         }else if(s_tid.equals("")){
             PrintWriter out=response.getWriter();
             out.println("<script>alert('팀을 선택하지 않았습니다.');location.href='Main.html';</script>");
+        }else{
+            String memo_count = request.getParameter("count");
+            MemoDAO memoDAO = new MemoDAO();
+            memoDAO.deleteMemo(memo_count);
+            response.sendRedirect("/memoLoad");
         }
-
-        String memo_count = request.getParameter("count");
-        MemoDAO memoDAO = new MemoDAO();
-        memoDAO.deleteMemo(memo_count);
-        response.sendRedirect("/memoLoad");
     }
 }

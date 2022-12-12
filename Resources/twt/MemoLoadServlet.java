@@ -30,22 +30,22 @@ public class MemoLoadServlet extends HttpServlet {
             out.println("<script>alert('팀을 선택하지 않았습니다.');location.href='Main.html';</script>");
             out.flush();
             destroy();
+        }else{
+            //out.println("<script>alert('"+ memo_text +"');</script>");
+            MemoDAO memoDAO = new MemoDAO(s_tid);
+            MemoVO memoVO = memoDAO.findMemo();
+            Cookie cookie = new Cookie("text", MemoVO.getText());
+            response.addCookie(cookie);
+            cookie = new Cookie("x", MemoVO.getX());
+            response.addCookie(cookie);
+            cookie = new Cookie("y", MemoVO.getY());
+            response.addCookie(cookie);
+            cookie = new Cookie("c", MemoVO.getC());
+            response.addCookie(cookie);
+
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WorkSpace.jsp");
+            requestDispatcher.forward(request, response);
         }
-
-        //out.println("<script>alert('"+ memo_text +"');</script>");
-        MemoDAO memoDAO = new MemoDAO(s_tid);
-        MemoVO memoVO = memoDAO.findMemo();
-        Cookie cookie = new Cookie("text", MemoVO.getText());
-        response.addCookie(cookie);
-        cookie = new Cookie("x", MemoVO.getX());
-        response.addCookie(cookie);
-        cookie = new Cookie("y", MemoVO.getY());
-        response.addCookie(cookie);
-        cookie = new Cookie("c", MemoVO.getC());
-        response.addCookie(cookie);
-
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WorkSpace.jsp");
-        requestDispatcher.forward(request, response);
     }
     public void destroy(){
         System.out.println("destroy exe");
