@@ -17,7 +17,7 @@ public class LogoutServlet extends HttpServlet {
         String s_uid=(String)session.getAttribute("id");
         if(session.getAttribute("id")==null) {
             PrintWriter out=response.getWriter();
-            out.println("<script>alert('login이 필요합니다.'); location.href='login_page.html';</script>");
+            out.println("<script>location.href='login_page.html';</script>");
         }else{
             Cookie[] cookies = request.getCookies();
             if (cookies != null) {
@@ -27,7 +27,7 @@ public class LogoutServlet extends HttpServlet {
                 }
             }
             session.invalidate();
-            response.sendRedirect("Main.html");
+            response.sendRedirect("login_page.html");
         }
     }
 }

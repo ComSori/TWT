@@ -38,21 +38,9 @@ body {
     margin:0px;
 }
 
-.formLink {
-    width:200px;
-    height:50px;
-    display:inline-block;
-    border: 5px solid black;
-    border-radius: 100px;
-    text-align:center;
-    font-size:30px;
-    font-weight:bold;
-    margin:0px;
-}
-
 .formLink:hover {
-    background:#3CB371;
-    color:white;
+    background: grey;
+    color:black;
     transition:0.5s;
 }
 
@@ -94,19 +82,19 @@ body {
 #team_select_contents .submit_btn {
     min-width:150px;
     min-height:150px;
-    border: 10px solid lightgray;
+    border: 10px solid black;
     border-radius: 20px;
     margin-left:10px;
     margin-right:10px;
 
-    background-color: #00FF7F;
+    background-color: white;
     color: black;
     transition:0.3s;
 }
 
 #team_select_contents .submit_btn:hover {
-    background-color: #3CB371;
-    color:white;
+    background-color: grey;
+    color:black;
     transition:0.3s;
 }
 

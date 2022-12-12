@@ -35,7 +35,7 @@
 
       if(!(getCookie("text") == null)) {
         <% HttpSession sessions = request.getSession(); %>
-        let text="<%= sessions.getAttribute("text").toString() %>";
+        let text="<%= sessions.getAttribute("text") %>";
         text = text.split(":");
         console.log(text);
         let x=getCookie("x").split(":");
