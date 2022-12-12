@@ -30,12 +30,17 @@
         document.getElementById("login_btn").style.display = "block";
         document.getElementById("logout_btn").style.display = "none";
       }
-      let text=getCookie("text").split(":");
-      let x=getCookie("x").split(":");
-      let y=getCookie("y").split(":");
-      let c=getCookie("c").split(":");
 
-      if(text.length > 1) {
+
+
+      if(!(getCookie("text") == null)) {
+        <% HttpSession sessions = request.getSession(); %>
+        let text="<%= sessions.getAttribute("text").toString() %>";
+        text = text.split(":");
+        console.log(text);
+        let x=getCookie("x").split(":");
+        let y=getCookie("y").split(":");
+        let c=getCookie("c").split(":");
          for(let i = 0; i < text.length - 1; i++) {
            create_memo_data(text[i], x[i], y[i], c[i]);
          }
@@ -71,6 +76,7 @@
     function memo_cancel() {
 
       var box = document.getElementById("memo_inputBox");
+      document.getElementById("memo_inputText").value = ""; // text reset
       box.style.display = "none";
       event.stopPropagation();
     }
@@ -82,7 +88,7 @@
       document.getElementById("text").setAttribute("value", document.getElementById("memo_inputText").value);
       var text = document.getElementById("memo_inputText").value;
       let memoBox = document.memoBox;
-      if(text != null) {
+      if(!(text=="")) {
         memoBox.method="post"
         memoBox.action="/memoAdd";
         memoBox.submit();
@@ -91,14 +97,14 @@
 
         var box = document.getElementById("memo_inputBox");
         box.style.display = "none";
-
+*/
         document.getElementById("memo_inputText").value = ""; // text reset
 
-         */
+
       }
       else {
         alert("텍스트를 입력해주세요");
-        window.history.back();
+        //window.history.back();
       }
       event.stopPropagation();
     }
@@ -132,7 +138,8 @@
         event.stopPropagation();
       };
       newMemo_controlBox.append(newMemo_cancel_button);
-      var newMemo_textBox = document.createElement("div");
+      var newMemo_textBox = document.createElement("textarea");
+      newMemo_textBox.setAttribute("readonly","readonly");
       newMemo_textBox.setAttribute("id", "memo_inputText");
       newMemo_textBox.innerText += text;
 

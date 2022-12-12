@@ -34,13 +34,16 @@ public class MemoLoadServlet extends HttpServlet {
             //out.println("<script>alert('"+ memo_text +"');</script>");
             MemoDAO memoDAO = new MemoDAO(s_tid);
             MemoVO memoVO = memoDAO.findMemo();
-            Cookie cookie = new Cookie("text", MemoVO.getText());
+
+            Cookie cookie = new Cookie("text", memoVO.getText());
+            session.setAttribute("text", memoVO.getText());
+
+            //response.addCookie(cookie);
+            cookie = new Cookie("x", memoVO.getX());
             response.addCookie(cookie);
-            cookie = new Cookie("x", MemoVO.getX());
+            cookie = new Cookie("y", memoVO.getY());
             response.addCookie(cookie);
-            cookie = new Cookie("y", MemoVO.getY());
-            response.addCookie(cookie);
-            cookie = new Cookie("c", MemoVO.getC());
+            cookie = new Cookie("c", memoVO.getC());
             response.addCookie(cookie);
 
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("WorkSpace.jsp");
