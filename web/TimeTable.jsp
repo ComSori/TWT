@@ -3,6 +3,7 @@
 <%@ page import="Resources.timetable.Class_list" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.lang.reflect.Array" %>
+<%@ page import="Resources.timetable.TableRef" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -27,12 +28,16 @@
     <%
     String tmp_id = new String();
     String tmp_name = new String();
-    int[][] collapse = new int[7][24];
+    ArrayList<TableRef> list = new ArrayList<TableRef>();
     for(int i = 0;i<7;i++){
-      for(int j = 0;j<24;j++){
-        collapse[i][j]=0;
-      }
+      list.add(new TableRef());
     }
+//    int[][] collapse = new int[7][24];
+//    for(int i = 0;i<7;i++){
+//      for(int j = 0;j<24;j++){
+//        collapse[i][j]=0;
+//      }
+//    }
     %>
     window.onload = function() {
         u_name = getCookie("name");
@@ -79,9 +84,15 @@
       for(TimetableVO c:vo_list){
         color.add("#"+String.format("%x",Math.round(Math.random()*0xffffff)));
         for(Class_list l : c.getList()){
-        //  for(int j =0;j<Integer.parseInt(l.getEnd())-Integer.parseInt(l.getStart())+1;j++){
-         //   collapse[l.getWeek()][Integer.parseInt(l.getStart()+j)]+=1;
-         // }
+          for(int j =0;j<Integer.parseInt(l.getEnd())-Integer.parseInt(l.getStart())+1;j++){
+//            collapse[l.getWeek()][Integer.parseInt(l.getStart()+j)]+=1;
+            int week = l.getWeek();
+            Integer selected_div = Integer.parseInt(l.getStart())+j;
+            String lecture = list.get(week).get(selected_div);
+            if(lecture==null) lecture = l.getLecture();
+            else lecture = lecture+=l.getLecture();
+            list.get(week).put(selected_div,lecture);
+          }
       %>
           var divstart = document.querySelector(".grids<%=l.getWeek()%> .grid_<%=l.getStart()%>");
           var divend = document.querySelector(".grids<%=l.getWeek()%> .grid_<%=l.getEnd()%>");
