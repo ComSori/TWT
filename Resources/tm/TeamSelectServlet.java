@@ -24,7 +24,7 @@ public class TeamSelectServlet extends HttpServlet {
         HttpSession session = request.getSession(true);
         String s_uid=(String)session.getAttribute("id");
         if(s_uid==null){
-            //PrintWriter out=response.getWriter();
+            PrintWriter out=response.getWriter();
             out.println("<script>alert('login이 필요합니다.'); location.href='login_page.html';</script>");
             out.flush();
             destroy();
@@ -42,6 +42,7 @@ public class TeamSelectServlet extends HttpServlet {
             }else {
                 PrintWriter out = response.getWriter();
                 out.println("<script>alert('해당 팀에 가입되지 않았거나 팀이 존재하지 않습니다.');windows.history.back();</script>");
+                out.flush();
                 destroy();
             }
         }

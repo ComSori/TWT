@@ -45,7 +45,7 @@ public class MemoDAO {
                 if(rs.getString("post_text").equals("")) {
                     continue;
                 }
-                input_text += rs.getString("post_text");
+                input_text += rs.getString(1);
                 x += rs.getString("posX");
                 y += rs.getString("posY");
                 c += rs.getString("count").toString();
