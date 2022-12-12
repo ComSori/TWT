@@ -29,15 +29,17 @@ public class TimetableServlet extends HttpServlet {
             out.println("<script>alert('팀선택이 필요합니다.'); location.href='Main.html';</script>");
             out.flush();
             destroy();
+        }else{
+            String s_tid=(String)session.getAttribute("team");
+
+            TimetableDAO  dao= new TimetableDAO(s_tid);//session teamid받은 dao객체
+            TimetableVO_list tabVO_list = dao.Load_member();//같은 팀원 id 저장된 timetablevo arraylist 반환
+
+            request.setAttribute("u_id_cnt",+tabVO_list.size());
+            request.setAttribute("vo_list",tabVO_list);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("TimeTable.jsp");
+            requestDispatcher.forward(request, response);
         }
-        String s_tid=(String)session.getAttribute("team");
 
-        TimetableDAO  dao= new TimetableDAO(s_tid);//session teamid받은 dao객체
-        TimetableVO_list tabVO_list = dao.Load_member();//같은 팀원 id 저장된 timetablevo arraylist 반환
-
-        request.setAttribute("u_id_cnt",+tabVO_list.size());
-        request.setAttribute("vo_list",tabVO_list);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("TimeTable.jsp");
-        requestDispatcher.forward(request, response);
     }
 }

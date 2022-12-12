@@ -28,26 +28,22 @@ public class TeamSelectServlet extends HttpServlet {
             out.println("<script>alert('login이 필요합니다.'); location.href='login_page.html';</script>");
             out.flush();
             destroy();
-        }
-
-        //null check
-        if(r_tid==null){
+        }else if(r_tid==null){
             PrintWriter out=response.getWriter();
             out.println("<script>alert('팀 id를 공란없이 입력해주세요');window.history.back();</script>");
             out.flush();
             destroy();
-        }
-        //DB
-        TeamDAO dao=new TeamDAO();
-
-        if(r_tid.equals(dao.selectTeam(s_uid,r_tid))){
-            session.setAttribute("team",r_tid);
-            response.sendRedirect("Main.html");
         }else{
-            PrintWriter out=response.getWriter();
-            out.println("<script>alert('해당 팀에 가입되지 않았거나 팀이 존재하지 않습니다.');windows.history.back();</script>");
-            destroy();
-        }
+            TeamDAO dao=new TeamDAO();
 
+            if(r_tid.equals(dao.selectTeam(s_uid,r_tid))){
+                session.setAttribute("team",r_tid);
+                response.sendRedirect("Main.html");
+            }else {
+                PrintWriter out = response.getWriter();
+                out.println("<script>alert('해당 팀에 가입되지 않았거나 팀이 존재하지 않습니다.');windows.history.back();</script>");
+                destroy();
+            }
+        }
     }
 }
