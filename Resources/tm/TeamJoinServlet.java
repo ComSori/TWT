@@ -21,25 +21,27 @@ public class TeamJoinServlet extends HttpServlet {
         }
 
         //null check
-        if(r_tid==null){
+        if(r_tid.equals("")){
             PrintWriter out =response.getWriter();
             out.println("<script>alert('id를 공란없이 입력해주세요');window.history.back();</script>");
             out.flush();
             destroy();
-        }
-        //DB
-        TeamDAO dao=new TeamDAO();
-
-        if(!dao.chk_team(r_tid)){
-            PrintWriter out=response.getWriter();
-            out.println("<script>alert('존재하지 않는 팀입니다.');window.history.back();</script>");
         }else{
-            dao.joinTeam(s_uid,r_tid);
-            session.setAttribute("team",r_tid);
+            TeamDAO dao=new TeamDAO();
+            //DB zone
+            if(!dao.chk_team(r_tid)){
+                PrintWriter out=response.getWriter();
+                out.println("<script>alert('존재하지 않는 팀입니다.');window.history.back();</script>");
+            }else {
+                dao.joinTeam(s_uid, r_tid);
+                session.setAttribute("team", r_tid);
 
-            Cookie cookie_tl=new Cookie("team_list",dao.teamlist(s_uid));
-            response.addCookie(cookie_tl);
-            response.sendRedirect("Main.html");
+                Cookie cookie_tl = new Cookie("team_list", dao.teamlist(s_uid));
+                response.addCookie(cookie_tl);
+                response.sendRedirect("Main.html");
+            }
         }
+
+
     }
 }

@@ -31,14 +31,15 @@ public class MemoAddServlet extends HttpServlet {
             destroy();
         }else if(s_tid.equals("")){
             out.println("<script>alert('팀을 선택하지 않았습니다.');location.href='Main.html';</script>");
+        }else{
+            String memo_text = request.getParameter("text");
+            String posX = request.getParameter("posX");
+            String posY = request.getParameter("posY");
+            MemoDAO memoDAO = new MemoDAO(memo_text, s_tid, posX, posY);
+            memoDAO.insertMemo();
+
+            response.sendRedirect("/memoLoad");
         }
 
-        String memo_text = request.getParameter("text");
-        String posX = request.getParameter("posX");
-        String posY = request.getParameter("posY");
-        MemoDAO memoDAO = new MemoDAO(memo_text, s_tid, posX, posY);
-        memoDAO.insertMemo();
-
-        response.sendRedirect("/memoLoad");
     }
 }

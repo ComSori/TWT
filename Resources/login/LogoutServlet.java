@@ -18,21 +18,16 @@ public class LogoutServlet extends HttpServlet {
         if(session.getAttribute("id")==null) {
             PrintWriter out=response.getWriter();
             out.println("<script>alert('login이 필요합니다.'); location.href='login_page.html';</script>");
-        }
-//        if(s_uid.equals("")){
-//            PrintWriter out=response.getWriter();
-//            out.println("<script>alert('login이 필요합니다.'); location.href='login_page.html';</script>");
-//        }
-
-        Cookie[] cookies = request.getCookies();
-        if(cookies != null){
-
-            for(int i=0; i < cookies.length; i++){
-                cookies[i].setMaxAge(0);
-                response.addCookie(cookies[i]);
+        }else{
+            Cookie[] cookies = request.getCookies();
+            if (cookies != null) {
+                for (int i = 0; i < cookies.length; i++) {
+                    cookies[i].setMaxAge(0);
+                    response.addCookie(cookies[i]);
+                }
             }
+            session.invalidate();
+            response.sendRedirect("Main.html");
         }
-        session.invalidate();
-        response.sendRedirect("Main.html");
     }
 }

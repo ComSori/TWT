@@ -20,28 +20,24 @@ public class TeamBuildServlet extends HttpServlet {
             out.println("<script>alert('login이 필요합니다.'); location.href='login_page.html';</script>");
             out.flush();
             destroy();
-        }
-
-        //null check
-        if(r_tname==null||r_tid==null){
-            PrintWriter out =response.getWriter();
+        }else if(r_tname==null||r_tid==null) {
+            PrintWriter out = response.getWriter();
             out.println("<script>alert('id혹은이름을 공란없이 입력해주세요');window.history.back();</script>");
             out.flush();
             destroy();
-        }
-
-        //DB
-        TeamDAO dao=new TeamDAO();
-
-        if(!dao.chk_team(r_tid)){
-            dao.buildTeam(r_tname,r_tid,s_uid);
-            session.setAttribute("team",r_tid);
-            Cookie cookie_tl=new Cookie("team_list",dao.teamlist(s_uid));
-            response.addCookie(cookie_tl);
-            response.sendRedirect("Main.html");
+            //test
         }else{
-            PrintWriter out=response.getWriter();
-            out.println("<script>alert('이미 존재하는 id입니다.');window.history.back();</script>");
+            TeamDAO dao=new TeamDAO();
+            if(!dao.chk_team(r_tid)){
+                dao.buildTeam(r_tname,r_tid,s_uid);
+                session.setAttribute("team",r_tid);
+                Cookie cookie_tl=new Cookie("team_list",dao.teamlist(s_uid));
+                response.addCookie(cookie_tl);
+                response.sendRedirect("Main.html");
+            }else{
+                PrintWriter out=response.getWriter();
+                out.println("<script>alert('이미 존재하는 id입니다.');window.history.back();</script>");
+            }
         }
     }
 }
