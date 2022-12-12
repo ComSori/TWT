@@ -4,13 +4,13 @@
     width: 20%;
     height: 100%;
     float:left;
-    background-color: rgba(252, 171, 171, 0.34);
+    background-color: rgba(94, 94, 94, 0.32);
 }
 
 .main_Content .timeTable_Contents {
     width:80%;
     height:100%;
-    background-color: rgba(252, 171, 171, 0.34);
+    background-color: rgba(94, 94, 94, 0.32);
     float:left;
     text-align : center;
 }
